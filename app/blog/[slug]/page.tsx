@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         slug={slug}
         publishedAt={post.publishedAt}
         updatedAt={post.updatedAt}
-        imageUrl={post.featuredImage?.url}
+        imageUrl={post.featuredImage?.url ?? undefined}
       />
       <Container>
         <header className="mx-auto max-w-3xl text-center">
