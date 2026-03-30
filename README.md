@@ -16,6 +16,18 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Brand Logo (Cloudinary)
+
+Set your logo from Cloudinary by creating a local env file:
+
+1. Copy `.env.example` to `.env.local`
+2. Update `NEXT_PUBLIC_LOGO_URL` with your Cloudinary image URL
+3. Optional: set `NEXT_PUBLIC_SITE_NAME` for image alt text/fallback brand text
+
+Example Cloudinary URL format:
+
+`https://res.cloudinary.com/<cloud-name>/image/upload/v1234567890/<logo-file>.png`
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

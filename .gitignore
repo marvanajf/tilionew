@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/studiotilio/node_modules
+/studio-tilio/node_modules
 /.pnp
 .pnp.*
 .yarn/*
