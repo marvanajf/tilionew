@@ -4,8 +4,9 @@ import { buildPageMetadata } from "@/components/seo/metadata";
 import { BulletSection, CtaBand, FeatureGridSection, MarketingHero, PulseIcon, ShieldIcon, SparkIcon } from "@/components/marketing/sections";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "About",
-  description: "Learn how Tilio helps modern teams turn AI search visibility into measurable growth outcomes.",
+  title: "About Tilio | UK AEO Agency for AI Visibility",
+  description:
+    "Learn about Tilio, the Exeter-based AEO agency helping marketing and SEO teams improve mentions and citations in AI-generated answers.",
   path: "/about",
 });
 

@@ -6,8 +6,9 @@ import { buildPageMetadata } from "@/components/seo/metadata";
 import { MarketingHero } from "@/components/marketing/sections";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "AI Checker",
-  description: "Assess how visible your brand is in AI-generated answers and identify priority gaps.",
+  title: "Free AI Visibility Checker | AI Search Readiness Tool",
+  description:
+    "Use our free AI visibility checker to test your site's AI search readiness. Check robots.txt, structured data, and on-page signals, then get an instant score and next steps.",
   path: "/ai-checker",
 });
 

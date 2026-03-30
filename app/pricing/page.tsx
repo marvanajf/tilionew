@@ -6,9 +6,9 @@ import { MarketingFramedSection, MarketingHero } from "@/components/marketing/se
 import { Container } from "@/components/ui/container";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Pricing",
+  title: "AEO Pricing | Managed Plan from £499 per Month",
   description:
-    "£499/month AEO plan: monitor ChatGPT, Perplexity, and Google AI Overviews with daily prompts, content support, and clear opportunities to improve mentions and citations.",
+    "See pricing for Tilio's managed AEO plan. From £499 per month with daily monitoring across ChatGPT, Perplexity, and Google AI Overviews, plus content support and reporting.",
   path: "/pricing",
 });
 

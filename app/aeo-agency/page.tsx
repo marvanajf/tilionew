@@ -6,9 +6,9 @@ import { MarketingHero } from "@/components/marketing/sections";
 import { Container } from "@/components/ui/container";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "AEO Agency",
+  title: "UK AEO Agency | Answer Engine Optimisation Services",
   description:
-    "We measure how Google, ChatGPT, Perplexity describe your brand, benchmark you against competitors, and improve content and pages to increase mentions and citations.",
+    "UK AEO agency for marketing and SEO teams. Improve mentions and citations in AI answers with technical foundations, answer-ready content, monitoring, and stakeholder reporting.",
   path: "/aeo-agency",
 });
 

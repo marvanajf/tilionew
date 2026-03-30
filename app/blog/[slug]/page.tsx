@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { PostPortableText } from "@/components/blog/portable-text";
+import { ArticleJsonLd } from "@/components/seo/json-ld";
 import { buildPageMetadata } from "@/components/seo/metadata";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
@@ -101,6 +102,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article className="py-12 md:py-16">
+      <ArticleJsonLd
+        title={post.title}
+        description={post.excerpt ?? post.title}
+        slug={slug}
+        publishedAt={post.publishedAt}
+        updatedAt={post.updatedAt}
+        imageUrl={post.featuredImage?.url}
+      />
       <Container>
         <header className="mx-auto max-w-3xl text-center">
           <p className="text-sm text-zinc-500">{formatDate(post.publishedAt)}</p>

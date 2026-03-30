@@ -6,8 +6,9 @@ import { CtaBand, MarketingHero } from "@/components/marketing/sections";
 import { Container } from "@/components/ui/container";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact",
-  description: "Get in touch to discuss AEO strategy, audits, and ongoing visibility growth support.",
+  title: "Contact Tilio | UK AEO Agency",
+  description:
+    "Contact Tilio, the Exeter-based AEO agency. Talk to us about AI visibility audits, managed AEO support, and improving visibility in AI-generated answers.",
   path: "/contact",
 });
 

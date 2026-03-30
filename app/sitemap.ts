@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
 
-import { blogIndexRoute, blogPostSlugs, legalRoutes, marketingRoutes } from "@/lib/routes";
+import { blogIndexRoute, legalRoutes, marketingRoutes } from "@/lib/routes";
+import { getAllPostSlugs } from "@/lib/sanity/api";
 import { siteConfig } from "@/lib/site-config";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const staticRoutes = [...marketingRoutes, ...legalRoutes, blogIndexRoute];
   const staticEntries = staticRoutes.map((route) => ({
@@ -11,7 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
   }));
 
-  const blogEntries = blogPostSlugs.map((slug) => ({
+  const slugs = await getAllPostSlugs();
+  const blogEntries = slugs.map((slug) => ({
     url: `${siteConfig.siteUrl}/blog/${slug}`,
     lastModified: now,
   }));

@@ -6,9 +6,9 @@ import { buildPageMetadata } from "@/components/seo/metadata";
 import { Container } from "@/components/ui/container";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "UK AEO Solutions",
+  title: "Answer Engine Optimisation for UK Businesses",
   description:
-    "Answer Engine Optimisation for UK businesses. Improve how you appear in AI-generated answers with clearer content, structure, and measurement.",
+    "Learn how Answer Engine Optimisation helps UK businesses improve visibility in AI-generated answers through clearer content, stronger structure, and ongoing measurement.",
   path: "/uk-aeo-solutions",
 });
 

@@ -9,11 +9,11 @@ type RawList = Parameters<typeof mapSanityPost>[0];
 export async function getAllPostSlugs(): Promise<string[]> {
   const client = getSanityReadClient();
   if (!client) {
-    return [...blogPostSlugs];
+    return [];
   }
 
   const slugs = await client.fetch<string[]>(postSlugsQuery);
-  return Array.isArray(slugs) && slugs.length > 0 ? slugs : [...blogPostSlugs];
+  return Array.isArray(slugs) ? slugs : [];
 }
 
 export async function getAllPosts(): Promise<SanityPost[]> {

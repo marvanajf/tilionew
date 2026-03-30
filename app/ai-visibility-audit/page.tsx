@@ -6,9 +6,9 @@ import { buildPageMetadata } from "@/components/seo/metadata";
 import { Container } from "@/components/ui/container";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "AI Visibility Audit",
+  title: "AI Visibility Audit | ChatGPT & Google AI Overviews",
   description:
-    "See whether AI recommends your business, where competitors are winning, and what to change first with a fixed-price AI Visibility Audit.",
+    "Find out whether AI recommends your business, where competitors are winning, and what to change first. Delivered in 24 hours for a fixed £149.",
   path: "/ai-visibility-audit",
 });
 
