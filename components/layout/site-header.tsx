@@ -11,8 +11,8 @@ const resourcesItems = [
   { href: "/ai-checker", label: "AI Checker" },
 ];
 
-const logoUrl = process.env.NEXT_PUBLIC_LOGO_URL;
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Tilio";
+const siteName = "Tilio";
+const logoUrl = "https://res.cloudinary.com/ddsqkll4f/image/upload/v1774819696/AEO_499month_6_oomwrq.png";
 
 function ContactCta({ className = "" }: { className?: string }) {
   return (
@@ -32,11 +32,7 @@ export function SiteHeader() {
         <div className="relative flex min-h-16 items-center">
           <div className="flex flex-1 items-center justify-start">
             <Link href="/" className="inline-flex items-center text-lg font-semibold text-zinc-900">
-              {logoUrl ? (
-                <Image src={logoUrl} alt={siteName} width={110} height={28} className="h-7 w-auto" priority />
-              ) : (
-                siteName
-              )}
+              <Image src={logoUrl} alt={siteName} width={110} height={28} className="h-7 w-auto" priority />
             </Link>
           </div>
 
