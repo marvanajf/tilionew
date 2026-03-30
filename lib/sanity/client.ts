@@ -20,7 +20,7 @@ export function getSanityConfig(): SanityClientConfig | null {
     projectId,
     dataset,
     apiVersion,
-    useCdn: true,
+    useCdn: false,
   };
 }
 

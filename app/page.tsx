@@ -8,7 +8,7 @@ import {
 } from "@/components/marketing/sections";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Home",
+  title: "AI Visibility & Answer Engine Optimisation",
   description:
     "Tilio helps businesses understand how AI systems describe their brand, benchmark competitors, and improve the content that drives mentions and citations.",
   path: "/",

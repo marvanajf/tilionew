@@ -23,9 +23,9 @@ const companyLinks = [
   { href: "/terms-of-service", label: "Terms" },
 ];
 
-const logoUrl = process.env.NEXT_PUBLIC_LOGO_URL;
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Tilio";
-const companyNumber = process.env.NEXT_PUBLIC_COMPANY_NUMBER || "16563350";
+const logoUrl = "https://res.cloudinary.com/ddsqkll4f/image/upload/v1774819696/AEO_499month_6_oomwrq.png";
+const siteName = "Tilio";
+const companyNumber = "16563350";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
