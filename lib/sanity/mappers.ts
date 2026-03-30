@@ -28,7 +28,7 @@ export function mapSanityPost(raw: RawSanityPost): SanityPost {
   return {
     _id: raw._id,
     title: raw.title ?? "",
-    slug: raw.slug ?? "",
+    slug: (raw.slug ?? "").replace(/^\/+/, ""),
     publishedAt: raw.publishedAt ?? "",
     updatedAt: raw.updatedAt,
     excerpt: raw.excerpt,

@@ -13,7 +13,8 @@ export async function getAllPostSlugs(): Promise<string[]> {
   }
 
   const slugs = await client.fetch<string[]>(postSlugsQuery);
-  return Array.isArray(slugs) ? slugs : [];
+  if (!Array.isArray(slugs)) return [];
+  return slugs.map((s) => s.replace(/^\/+/, ""));
 }
 
 export async function getAllPosts(): Promise<SanityPost[]> {
@@ -36,7 +37,10 @@ export async function getPostBySlug(slug: string): Promise<SanityPost | null> {
     return null;
   }
 
-  const row = await client.fetch<RawList | null>(postBySlugQuery, { slug });
+  let row = await client.fetch<RawList | null>(postBySlugQuery, { slug });
+  if (!row) {
+    row = await client.fetch<RawList | null>(postBySlugQuery, { slug: `/${slug}` });
+  }
   if (!row || !row.slug) {
     return null;
   }

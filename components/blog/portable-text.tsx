@@ -4,6 +4,7 @@ import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { SanityImageSource } from "@sanity/image-url";
 
 import { sanityImageUrl } from "@/lib/sanity/image-builder";
+import { slugifyHeading } from "@/lib/toc";
 
 type PortableTextValue = {
   _type?: string;
@@ -17,12 +18,24 @@ const components: PortableTextComponents = {
     normal: ({ children }) => (
       <p className="mt-4 text-sm leading-relaxed text-zinc-700 first:mt-0 md:text-base">{children}</p>
     ),
-    h2: ({ children }) => (
-      <h2 className="mt-10 text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="mt-8 text-lg font-semibold tracking-tight text-zinc-900">{children}</h3>
-    ),
+    h2: ({ children, value }) => {
+      const text = (value as { children?: { text?: string }[] })?.children?.map((c) => c.text ?? "").join("") ?? "";
+      const id = slugifyHeading(text);
+      return (
+        <h2 id={id} className="scroll-mt-24 mt-10 first:mt-0 text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
+          {children}
+        </h2>
+      );
+    },
+    h3: ({ children, value }) => {
+      const text = (value as { children?: { text?: string }[] })?.children?.map((c) => c.text ?? "").join("") ?? "";
+      const id = slugifyHeading(text);
+      return (
+        <h3 id={id} className="scroll-mt-24 mt-8 text-lg font-semibold tracking-tight text-zinc-900">
+          {children}
+        </h3>
+      );
+    },
     h4: ({ children }) => (
       <h4 className="mt-6 text-base font-semibold text-zinc-900">{children}</h4>
     ),
