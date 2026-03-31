@@ -81,7 +81,7 @@ export function SiteFooter() {
               ))}
               <li>
                 <a
-                  href="https://www.linkedin.com/company/tilio/"
+                  href="https://www.linkedin.com/company/trytilio/"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 transition-colors hover:text-[#1d4ed8]"

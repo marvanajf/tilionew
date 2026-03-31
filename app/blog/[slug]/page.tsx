@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { PostPortableText } from "@/components/blog/portable-text";
 import { TableOfContents, TocMobile } from "@/components/blog/table-of-contents";
-import { ArticleJsonLd } from "@/components/seo/json-ld";
+import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { buildPageMetadata } from "@/components/seo/metadata";
 import { Section } from "@/components/ui/section";
 import { siteConfig } from "@/lib/site-config";
@@ -80,25 +80,35 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       : `${baseUrl}${rawCanonical.startsWith("/") ? "" : "/"}${rawCanonical}`;
   }
 
-  const base: Metadata = {
+  const postUrl = `${baseUrl}/blog/${slug}`;
+  const ogImage = post.featuredImage?.url
+    ? [{ url: post.featuredImage.url, width: 1200, height: 630, alt: post.featuredImage.alt ?? title }]
+    : [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: `${title} | ${siteConfig.name}` }];
+  const fullTitle = `${title} | ${siteConfig.name}`;
+
+  return {
     title,
     description,
     alternates: {
       canonical,
     },
+    openGraph: {
+      type: "article",
+      title: fullTitle,
+      description,
+      url: postUrl,
+      siteName: siteConfig.name,
+      images: ogImage,
+      ...(post.publishedAt ? { publishedTime: post.publishedAt } : {}),
+      ...(post.updatedAt ? { modifiedTime: post.updatedAt } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description,
+      images: [ogImage[0].url],
+    },
   };
-
-  if (post.featuredImage?.url) {
-    return {
-      ...base,
-      openGraph: {
-        ...base.openGraph,
-        images: [{ url: post.featuredImage.url, alt: post.featuredImage.alt ?? title }],
-      },
-    };
-  }
-
-  return base;
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -127,11 +137,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         updatedAt={post.updatedAt}
         imageUrl={post.featuredImage?.url ?? undefined}
       />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "Blog", url: `${siteConfig.siteUrl}/blog` },
+          { name: post.title, url: postUrl },
+        ]}
+      />
 
       {/* Title / meta section */}
       <div className="relative overflow-clip py-12 md:py-16">
         <FramingLines />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm text-zinc-500">{formatDate(post.publishedAt)}</p>
             <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl">{post.title}</h1>
@@ -148,7 +165,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-7xl px-6 lg:px-8" aria-hidden>
             <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(24,24,27,0.07)_1px,transparent_1px)] bg-[length:12px_12px] md:bg-[length:14px_14px]" />
           </div>
-          <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
             <div className="relative mx-auto aspect-[16/9] max-w-4xl overflow-hidden rounded-xl border border-zinc-200">
               <Image
                 src={post.featuredImage.url}
@@ -166,7 +183,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Post body with sidebar — overflow-clip keeps framing lines clipped without breaking sticky */}
       <div className="relative overflow-clip">
         <FramingLines />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-0 lg:grid-cols-4">
 
             {/* Sidebar — pt-16 on the column div aligns content with article top */}

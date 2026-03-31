@@ -31,7 +31,7 @@ export async function submitContactForm(
     fieldErrors.email = "Please enter a valid email address.";
   }
   if (!company) fieldErrors.company = "Please enter your company name.";
-  if (!interest || !["ai-visibility-audit", "aeo-plan"].includes(interest)) {
+  if (!interest || !["ai-visibility-audit", "aeo-plan", "expertise"].includes(interest)) {
     fieldErrors.interest = "Please select an option.";
   }
   if (message.length > 200) {

@@ -32,29 +32,23 @@ export default function ContactPage() {
                   How we can help
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                  We work with UK marketing and SEO teams who want to improve how their brand shows up in AI search results — from a one-off audit to an ongoing monthly programme.
+                  We work with UK marketing and SEO teams who want to improve how their brand shows up in AI search — from a one-off audit to an ongoing monthly programme, to bespoke consulting.
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900">AI Visibility Audit</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                  A fixed-price written assessment of how AI systems describe your brand today. Delivered in 24 hours.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900">AEO Plan</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                  Monthly monitoring, content, and reporting across ChatGPT, Perplexity, and Google AI Overviews. £499/month.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900">Based in Exeter</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                  We serve clients across the UK. We aim to respond to all enquiries within one business day.
-                </p>
+              <div className="space-y-5 border-t border-zinc-100 pt-6">
+                <div>
+                  <p className="text-xs font-semibold text-zinc-500">Response time</p>
+                  <p className="mt-1 text-sm leading-relaxed text-zinc-600">We aim to respond to all enquiries within one business day.</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-zinc-500">Based in</p>
+                  <p className="mt-1 text-sm leading-relaxed text-zinc-600">Exeter, UK — serving clients across the country.</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-zinc-500">Not sure what you need?</p>
+                  <p className="mt-1 text-sm leading-relaxed text-zinc-600">Select Expertise and tell us where you are — we'll suggest the right fit.</p>
+                </div>
               </div>
             </div>
 

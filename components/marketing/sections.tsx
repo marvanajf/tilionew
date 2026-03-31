@@ -64,6 +64,7 @@ type HeroProps = {
   description: string;
   primaryCta: { href: string; label: string };
   secondaryCta?: { href: string; label: string };
+  secondaryCtaVariant?: "default" | "white";
   /** Rendered after the description and before the primary/secondary CTAs (e.g. interactive tools). */
   children?: ReactNode;
   bleedBehindHeader?: boolean;
@@ -81,6 +82,7 @@ export function MarketingHero({
   description,
   primaryCta,
   secondaryCta,
+  secondaryCtaVariant = "default",
   children,
   bleedBehindHeader = false,
   showFramingLines = true,
@@ -129,7 +131,7 @@ export function MarketingHero({
           </div>
         </div>
       ) : null}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h1
             className={`text-3xl font-medium leading-[1.1] tracking-tight md:text-4xl lg:text-5xl ${
@@ -141,7 +143,6 @@ export function MarketingHero({
           <p className={`mx-auto mt-8 max-w-3xl text-base leading-relaxed md:text-lg lg:text-xl ${lightText ? "text-white/90" : "text-zinc-700"}`}>
             {description}
           </p>
-          {children ? <div className="mt-10 mx-auto w-full max-w-2xl text-left">{children}</div> : null}
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-5">
             <Link
               href={primaryCta.href}
@@ -158,12 +159,17 @@ export function MarketingHero({
             {secondaryCta ? (
               <Link
                 href={secondaryCta.href}
-                className="inline-flex items-center rounded-[10px] border border-[#93c5fd] bg-[#93c5fd]/20 px-7 py-3 text-sm font-medium text-[#1d4ed8] transition-colors hover:bg-[#93c5fd] hover:text-[#1e3a8a]"
+                className={
+                  secondaryCtaVariant === "white"
+                    ? "inline-flex items-center rounded-[10px] border border-zinc-200 bg-white px-7 py-3 text-sm font-medium text-zinc-900 transition-colors hover:border-zinc-300 hover:bg-zinc-50"
+                    : "inline-flex items-center rounded-[10px] border border-[#93c5fd] bg-[#93c5fd]/20 px-7 py-3 text-sm font-medium text-[#1d4ed8] transition-colors hover:bg-[#93c5fd] hover:text-[#1e3a8a]"
+                }
               >
                 {secondaryCta.label}
               </Link>
             ) : null}
           </div>
+          {children ? <div className="mt-16 mx-auto w-full max-w-2xl">{children}</div> : null}
         </div>
       </div>
     </section>
@@ -190,7 +196,7 @@ export function MarketingFramedSection({
           <div className="absolute right-0 top-0 h-full w-[0.5px] bg-zinc-200" />
         </div>
       </div>
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">{children}</div>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">{children}</div>
     </section>
   );
 }
@@ -245,7 +251,7 @@ export function VisibilitySourcesSection() {
           <div className="absolute right-0 top-0 h-full w-[0.5px] bg-zinc-200" />
         </div>
       </div>
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
         <div className="py-16 md:py-24">
           <div>
             <div className="mx-auto max-w-3xl text-center">
@@ -315,7 +321,7 @@ export function VisibilitySourcesSection() {
                     href="/pricing"
                     className="group inline-flex items-center rounded-[10px] border border-[#93c5fd] bg-[#93c5fd]/20 px-6 py-2 text-sm font-medium text-[#1d4ed8] transition-all duration-200 hover:bg-[#93c5fd] hover:text-[#1e3a8a]"
                   >
-                    <span className="mr-2">View the £499/month plan</span>
+                    <span className="mr-2">View plan</span>
                     <span className="inline-flex rounded-[10px] border border-[#93c5fd] p-1 transition-all duration-200 group-hover:border-[#60a5fa]">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden>
                         <path d="M5 12h14" />

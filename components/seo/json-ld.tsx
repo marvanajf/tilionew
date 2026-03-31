@@ -16,7 +16,7 @@ export function OrganizationJsonLd() {
       "@type": "Country",
       name: "United Kingdom",
     },
-    sameAs: ["https://www.linkedin.com/company/tilio/"],
+    sameAs: ["https://www.linkedin.com/company/trytilio/"],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
@@ -83,6 +83,31 @@ export function ArticleJsonLd({ title, description, slug, publishedAt, updatedAt
       "@id": url,
     },
     ...(imageUrl ? { image: imageUrl } : {}),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+type BreadcrumbItem = {
+  name: string;
+  url: string;
+};
+
+export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 
   return (

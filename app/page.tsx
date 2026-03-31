@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { LogoCycler } from "@/components/marketing/logo-cycler";
 import {
   MarketingHero,
   OverarchingFaqSection,
@@ -21,10 +22,13 @@ export default function HomePage() {
         eyebrow="Answer Engine Optimization"
         title="Measure and improve your AI visibility"
         description="Tilio helps businesses understand how AI systems describe their brand, benchmark competitors, and improve the content that drives mentions and citations."
-        primaryCta={{ href: "/contact", label: "Book a strategy call" }}
-        secondaryCta={{ href: "/ai-visibility-audit", label: "See audit options" }}
+        primaryCta={{ href: "/contact", label: "Book call" }}
+        secondaryCta={{ href: "/ai-checker", label: "Free AI Visibility tool" }}
+        secondaryCtaVariant="white"
         size="tall"
-      />
+      >
+        <LogoCycler />
+      </MarketingHero>
       <VisibilitySourcesSection />
       <OverarchingFaqSection />
     </>
