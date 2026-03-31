@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const servicesItems = [
   { href: "/aeo-agency", label: "AEO Services" },
@@ -26,6 +30,13 @@ function ContactCta({ className = "" }: { className?: string }) {
 }
 
 export function SiteHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200 bg-background/95 backdrop-blur-[8px]">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
@@ -103,44 +114,52 @@ export function SiteHeader() {
 
           <div className="flex flex-1 items-center justify-end gap-2">
             <ContactCta />
-            <details className="relative lg:hidden">
-              <summary className="list-none cursor-pointer rounded-md p-2 text-zinc-900">
+            <div className="relative lg:hidden">
+              <button
+                type="button"
+                aria-label="Toggle menu"
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((o) => !o)}
+                className="cursor-pointer rounded-md p-2 text-zinc-900"
+              >
                 <svg viewBox="0 0 16 16" className="h-5 w-5" aria-hidden>
                   <rect x="1" y="3" width="14" height="1.5" rx=".75" fill="currentColor" />
                   <rect x="1" y="7.25" width="14" height="1.5" rx=".75" fill="currentColor" />
                   <rect x="1" y="11.5" width="14" height="1.5" rx=".75" fill="currentColor" />
                 </svg>
-              </summary>
-              <div className="absolute right-0 mt-2 w-72 rounded-xl border border-zinc-200 bg-background p-3 shadow-xl">
-                <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500">Services</p>
-                {servicesItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block rounded-lg px-2 py-2 text-sm text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              </button>
+              {menuOpen && (
+                <div className="absolute right-0 mt-2 w-72 rounded-xl border border-zinc-200 bg-background p-3 shadow-xl">
+                  <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500">Services</p>
+                  {servicesItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block rounded-lg px-2 py-2 text-sm text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
 
-                <p className="mt-3 px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500">Resources</p>
-                {resourcesItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block rounded-lg px-2 py-2 text-sm text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                  <p className="mt-3 px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500">Resources</p>
+                  {resourcesItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block rounded-lg px-2 py-2 text-sm text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
 
-                <div className="mt-3 border-t border-zinc-200 pt-3">
-                  <Link href="/pricing" className="block rounded-lg px-2 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900">
-                    Pricing
-                  </Link>
+                  <div className="mt-3 border-t border-zinc-200 pt-3">
+                    <Link href="/pricing" className="block rounded-lg px-2 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900">
+                      Pricing
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </details>
+              )}
+            </div>
           </div>
         </div>
       </div>
