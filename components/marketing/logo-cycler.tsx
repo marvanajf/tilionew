@@ -6,6 +6,11 @@ import { useEffect, useState } from "react";
 // so the rendered height maps directly to the actual logo artwork, not the padded canvas
 const LOGOS = [
   {
+    src: "https://res.cloudinary.com/ddsqkll4f/image/upload/e_trim/v1774989097/GOOGLE_AI_cjdfts.png",
+    alt: "Google AI Overviews",
+    height: 36,
+  },
+  {
     src: "https://res.cloudinary.com/ddsqkll4f/image/upload/e_trim/v1774989205/chatpt_logo_y964up.png",
     alt: "ChatGPT",
     height: 36,
@@ -13,11 +18,6 @@ const LOGOS = [
   {
     src: "https://res.cloudinary.com/ddsqkll4f/image/upload/e_trim/v1774989154/ChatGPT_Image_Mar_31_2026_09_32_00_PM_nrwlld.png",
     alt: "Perplexity",
-    height: 36,
-  },
-  {
-    src: "https://res.cloudinary.com/ddsqkll4f/image/upload/e_trim/v1774989097/GOOGLE_AI_cjdfts.png",
-    alt: "Google AI Overviews",
     height: 36,
   },
 ] as const;
@@ -45,6 +45,12 @@ export function LogoCycler() {
 
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {/* Preload all logos so there's no fetch/decode stutter on first show */}
+      <div style={{ position: "absolute", width: 0, height: 0, overflow: "hidden", pointerEvents: "none" }} aria-hidden="true">
+        {LOGOS.map((l) => (
+          <img key={l.src} src={l.src} alt="" fetchPriority="high" />
+        ))}
+      </div>
       <div
         style={{
           height: 40,
