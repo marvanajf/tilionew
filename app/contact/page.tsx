@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
-import { CtaBand, MarketingHero } from "@/components/marketing/sections";
-import { Container } from "@/components/ui/container";
+import { MarketingHero, MarketingFramedSection } from "@/components/marketing/sections";
+import { ContactForm } from "@/components/contact/contact-form";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact Tilio | UK AEO Agency",
@@ -18,41 +17,54 @@ export default function ContactPage() {
       <MarketingHero
         eyebrow="Contact"
         title="Tell us where you want your brand to show up."
-        description="Share your goals, timeline, and market context. We will suggest a practical next step that fits your team."
-        primaryCta={{ href: "#contact-form", label: "Start your inquiry" }}
-        secondaryCta={{ href: "/pricing", label: "Review plans" }}
+        description="Share what you're looking for and we'll suggest the right next step."
+        primaryCta={{ href: "#contact-form", label: "Start your enquiry" }}
       />
-      <section id="contact-form" className="py-16">
-        <Container>
-          <div className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-zinc-200 p-6">
-              <h2 className="text-xl font-semibold tracking-tight text-zinc-900">What to include</h2>
-              <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-                <li>Business goals and target outcomes</li>
-                <li>Current SEO/AEO maturity</li>
-                <li>Primary market and audience</li>
-                <li>Preferred launch timeline</li>
-              </ul>
-            </article>
-            <article className="rounded-2xl border border-zinc-200 p-6">
-              <h2 className="text-xl font-semibold tracking-tight text-zinc-900">Contact flow status</h2>
-              <p className="mt-4 text-sm leading-6 text-zinc-600">
-                A production form endpoint will be added in the next implementation step. For now, this page is ready for final copy and form wiring.
-              </p>
-              <div className="mt-5">
-                <Link href="/ai-visibility-audit" className="text-sm font-medium text-zinc-900 underline underline-offset-4">
-                  Explore the AI Visibility Audit first
-                </Link>
+
+      <MarketingFramedSection id="contact-form">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-12 md:grid-cols-[1fr_2fr] md:gap-16">
+
+            {/* Left: context panel */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-xl font-semibold tracking-tight text-zinc-900">
+                  How we can help
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                  We work with UK marketing and SEO teams who want to improve how their brand shows up in AI search results — from a one-off audit to an ongoing monthly programme.
+                </p>
               </div>
-            </article>
+
+              <div>
+                <h3 className="text-sm font-semibold text-zinc-900">AI Visibility Audit</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                  A fixed-price written assessment of how AI systems describe your brand today. Delivered in 24 hours.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-zinc-900">AEO Plan</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                  Monthly monitoring, content, and reporting across ChatGPT, Perplexity, and Google AI Overviews. £499/month.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-zinc-900">Based in Exeter</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                  We serve clients across the UK. We aim to respond to all enquiries within one business day.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: form */}
+            <div>
+              <ContactForm />
+            </div>
           </div>
-        </Container>
-      </section>
-      <CtaBand
-        title="Prefer to start with an audit?"
-        description="If you want a concrete baseline before a full engagement, begin with a visibility audit."
-        primary={{ href: "/ai-visibility-audit", label: "View audit path" }}
-      />
+        </div>
+      </MarketingFramedSection>
     </>
   );
 }
