@@ -6,9 +6,9 @@ import { buildPageMetadata } from "@/components/seo/metadata";
 import { Container } from "@/components/ui/container";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Answer Engine Optimisation for UK Businesses",
+  title: "AI SEO for UK businesses | Improve visibility in AI search",
   description:
-    "Learn how Answer Engine Optimisation helps UK businesses improve visibility in AI-generated answers through clearer content, stronger structure, and ongoing measurement.",
+    "Learn how UK businesses should approach AI SEO, which pages to improve first, common site gaps to fix, and whether to start with an audit or ongoing support.",
   path: "/uk-aeo-solutions",
 });
 
@@ -16,23 +16,17 @@ export default function UkAeoSolutionsPage() {
   return (
     <>
       <MarketingHero
-        eyebrow="UK AEO Solutions"
-        title="Answer Engine Optimisation for UK businesses"
-        description="Improve how your business appears in AI-generated answers. We help businesses across the UK strengthen visibility through better content, clearer structure, and ongoing measurement."
+        title="How UK businesses can improve visibility in AI search"
+        description="AI SEO is becoming more important for UK businesses because buyers are using AI tools to research providers, compare options and sense-check decisions before they ever make contact."
         primaryCta={{ href: "/aeo-agency", label: "Explore AEO agency support" }}
         secondaryCta={{ href: "/ai-visibility-audit", label: "Get an AI Visibility Audit" }}
       />
-      <WhatAeoMeansSection />
-      <StrongAeoWorkSection />
-      <HowTilioHelpsIntroSection />
-      <AeoAgencySupportSection />
-      <AiVisibilityAuditTeaserSection />
-      <ContentReportingSection />
-      <WhoItsForSection />
-      <TypicalExamplesSection />
-      <GoodReportingSection />
-      <CommonQuestionsSection />
-      <FinalSection />
+      <WhyItMattersSection />
+      <WhatPagesMatterSection />
+      <CommonGapsSection />
+      <AuditOrSupportSection />
+      <WhoBenefitsSection />
+      <FaqSection />
     </>
   );
 }
@@ -53,12 +47,10 @@ function SectionFrame({ children, className = "py-16 md:py-20" }: { children: Re
 }
 
 function StickySplitSection({
-  label,
   title,
   intro,
   children,
 }: {
-  label: string;
   title: string;
   intro: string;
   children: React.ReactNode;
@@ -67,8 +59,7 @@ function StickySplitSection({
     <SectionFrame>
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.6fr] lg:gap-14">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <p className="text-sm font-medium text-zinc-500">{label}</p>
-          <h2 className="mt-2 text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">{title}</h2>
+          <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">{title}</h2>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600 md:text-base">{intro}</p>
         </div>
         <div>{children}</div>
@@ -94,330 +85,195 @@ function PrimaryCta({ href, label }: { href: string; label: string }) {
   );
 }
 
-function WhatAeoMeansSection() {
+function WhyItMattersSection() {
   return (
     <StickySplitSection
-      label="Definition"
-      title="What Answer Engine Optimisation means"
-      intro="Answer Engine Optimisation, or AEO, is the practice of improving the likelihood that AI systems mention your brand, describe it accurately, and cite your website as a source."
+      title="Why AI SEO matters for UK businesses"
+      intro="AI-led search is changing how people discover and evaluate businesses."
     >
       <div className="space-y-4 text-sm leading-relaxed text-zinc-600 md:text-base">
         <p>
-          In practice, that usually means improving the pages buyers rely on when comparing providers, making key information easier to understand, and
-          giving AI systems clearer signals about what you do, who you help, and why you are credible.
+          Instead of only typing a short keyword into Google, people are asking fuller questions, looking for recommendations, comparing alternatives and expecting direct answers. That matters because your business is no longer only competing for a click. It is also competing to be understood, summarised and surfaced in answer-led search experiences.
         </p>
         <p>
-          AEO overlaps with SEO, but the focus is slightly different. Traditional SEO is about visibility in search results. AEO is about how your business
-          appears inside AI-generated answers.
+          For UK businesses, that usually means the most important work is not chasing trendy tactics. It is making your key pages clearer, your positioning easier to follow and your site easier to trust.
+        </p>
+        <p>
+          AI SEO, including answer engine optimisation or AEO, is really about doing that well.
         </p>
       </div>
-      <div className="mt-8">
-        <PrimaryCta href="/aeo-agency" label="Explore AEO agency support" />
-      </div>
     </StickySplitSection>
   );
 }
 
-function StrongAeoWorkSection() {
-  const pillars = [
-    {
-      title: "Answer-ready content",
-      copy: "Pages need to answer the questions buyers actually ask. That often means clearer service copy, stronger definitions, better FAQs, useful pricing context, comparison pages, and proof that can be summarised confidently.",
-    },
-    {
-      title: "Technical discoverability",
-      copy: "AI systems need to access and interpret your pages clearly. That includes internal linking, page structure, duplication, crawl paths, and how key pages are organised.",
-    },
-    {
-      title: "Consistent trust signals",
-      copy: "Your business, services, and expertise need to be described consistently across the site so AI systems can connect the dots and reduce ambiguity.",
-    },
-    {
-      title: "Measurement over time",
-      copy: "AEO changes by prompt, platform, and competitor set. Tracking helps you understand where you are being mentioned, where you are being cited, and what to improve next.",
-    },
+function WhatPagesMatterSection() {
+  const pages = [
+    "service pages",
+    "product pages",
+    "pricing pages",
+    "comparison pages",
+    "FAQs",
+    "proof-led pages such as case studies, testimonials or results pages",
   ];
 
   return (
     <StickySplitSection
-      label="Scope"
-      title="What strong AEO work usually includes"
-      intro="Effective AEO is not one tactic. It is usually a combination of content clarity, technical accessibility, credibility, and measurement."
+      title="What pages matter most"
+      intro="Most businesses do not need to start with the whole site. The best place to begin is usually the pages closest to buyer intent."
     >
-      <ol className="list-none space-y-0">
-        {pillars.map((pillar, index) => (
-          <li
-            key={pillar.title}
-            className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 gap-y-2 border-b border-zinc-100 py-8 first:pt-0 last:border-b-0 last:pb-0 md:gap-x-8 md:py-10"
-          >
-            <span className="select-none text-2xl font-semibold tabular-nums leading-none text-zinc-300 md:text-3xl" aria-hidden>
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <h3 className="text-base font-semibold text-zinc-900">{pillar.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">{pillar.copy}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-      <div className="mt-8">
-        <PrimaryCta href="/ai-visibility-audit" label="Get an AI Visibility Audit" />
+      <div className="space-y-4 text-sm leading-relaxed text-zinc-600 md:text-base">
+        <p>These are the pages that help someone decide whether you are relevant, credible and worth shortlisting. That usually includes:</p>
+        <ul className="list-disc space-y-2 pl-5 marker:text-zinc-500">
+          {pages.map((item) => (
+            <li key={item} className="pl-1">{item}</li>
+          ))}
+        </ul>
+        <p>
+          These pages often matter more than blog content in the early stages because they answer the questions buyers ask when they are already evaluating their options.
+        </p>
+        <p>
+          A blog can still play an important supporting role, but many businesses get more immediate value from improving the pages that explain what they do, who they help, what it costs and why someone should trust them.
+        </p>
       </div>
     </StickySplitSection>
   );
 }
 
-function HowTilioHelpsIntroSection() {
-  return (
-    <SectionFrame className="py-12 md:py-16">
-      <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">How Tilio helps</h2>
-      <p className="mt-4 max-w-4xl text-sm leading-relaxed text-zinc-600 md:text-base">
-        We support businesses across the UK with practical AEO services designed to improve AI visibility in ways that are measurable and commercially
-        useful.
-      </p>
-    </SectionFrame>
-  );
-}
-
-function AeoAgencySupportSection() {
-  return (
-    <StickySplitSection
-      label="Ongoing"
-      title="AEO agency support"
-      intro="Our ongoing AEO service is for teams that want regular measurement, competitor benchmarking, content priorities, and reporting that helps them improve over time."
-    >
-      <p className="text-sm leading-relaxed text-zinc-600 md:text-base">
-        We track how AI systems describe your brand, compare your visibility against competitors, and turn that into clear priorities for content and
-        page improvement.
-      </p>
-      <div className="mt-8">
-        <PrimaryCta href="/aeo-agency" label="Explore AEO agency support" />
-      </div>
-    </StickySplitSection>
-  );
-}
-
-function AiVisibilityAuditTeaserSection() {
-  return (
-    <StickySplitSection
-      label="Starting point"
-      title="AI Visibility Audit"
-      intro="Our fixed-price AI Visibility Audit is a straightforward starting point if you want to understand where you stand now."
-    >
-      <p className="text-sm leading-relaxed text-zinc-600 md:text-base">
-        It shows how often your business is mentioned and cited in ChatGPT and Google AI Overviews, where competitors are winning, and what to change
-        first.
-      </p>
-      <div className="mt-8">
-        <PrimaryCta href="/ai-visibility-audit" label="Get an AI Visibility Audit" />
-      </div>
-    </StickySplitSection>
-  );
-}
-
-function ContentReportingSection() {
-  return (
-    <StickySplitSection
-      label="Delivery"
-      title="Content improvement and reporting"
-      intro="We also help teams improve the pages most likely to influence AI visibility, including service pages, pricing pages, FAQs, comparison content, and proof-led content that is easier for AI systems to quote and cite."
-    >
-      <p className="text-sm leading-relaxed text-zinc-600 md:text-base">For agencies, we can support reporting and white-label outputs where needed.</p>
-      <div className="mt-8">
-        <PrimaryCta href="/contact" label="Talk to Tilio" />
-      </div>
-    </StickySplitSection>
-  );
-}
-
-function WhoItsForSection() {
-  const fit = [
-    "B2B service businesses in competitive markets",
-    "SaaS companies where comparisons and shortlist searches matter",
-    "Agencies supporting clients with visibility and content strategy",
-    "marketing teams responsible for demand generation and conversion",
-    "businesses that want a clearer view of how AI systems talk about their brand",
-  ];
-  const mostValue = [
-    "buyers in your market already use AI tools to research options",
-    "competitors are appearing more often than you in answer-led searches",
-    "your site is decent, but not clearly built to be cited",
-    "your pricing, proof, deliverables, or positioning are hard to summarise",
+function CommonGapsSection() {
+  const gaps = [
+    "service pages that use polished marketing language but do not answer real buyer questions clearly",
+    "vague or missing pricing information",
+    "weak internal links between service pages, FAQs and proof points",
+    "inconsistent language for the same service or offer",
+    "not enough detail on deliverables, process, outcomes or fit",
+    "generic content that sounds fine but says very little",
+    "important information buried in tabs, PDFs or awkward layouts",
   ];
 
   return (
     <StickySplitSection
-      label="Fit"
-      title="Who this is for"
-      intro="Our AEO support is a good fit for teams that need practical measurement and page-level improvements."
+      title="Common gaps on UK business websites"
+      intro="A lot of UK business websites are not far off. The issue is rarely that everything is broken. It is usually that the most important information is harder to understand than it should be."
     >
-      <p className="text-sm font-semibold text-zinc-900">Our AEO support is a good fit for:</p>
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-600 marker:text-zinc-500 md:text-base">
-        {fit.map((item) => (
-          <li key={item} className="pl-1">
-            {item}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-7 text-sm font-semibold text-zinc-900">You will usually get the most value if:</p>
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-600 marker:text-zinc-500 md:text-base">
-        {mostValue.map((item) => (
-          <li key={item} className="pl-1">
-            {item}
-          </li>
-        ))}
-      </ul>
-      <div className="mt-8">
-        <PrimaryCta href="/contact" label="Talk to Tilio" />
+      <div className="space-y-4 text-sm leading-relaxed text-zinc-600 md:text-base">
+        <ul className="list-disc space-y-2 pl-5 marker:text-zinc-500">
+          {gaps.map((item) => (
+            <li key={item} className="pl-1">{item}</li>
+          ))}
+        </ul>
+        <p>
+          These gaps matter because AI systems need to connect the dots quickly. If your site makes that easy, you are easier to describe accurately. If it creates ambiguity, you are easier to overlook.
+        </p>
       </div>
     </StickySplitSection>
   );
 }
 
-function TypicalExamplesSection() {
-  const examples = [
-    {
-      title: "SaaS company improving shortlist visibility",
-      copy: "A SaaS company strengthens category pages, adds clearer comparison content, and publishes buyer FAQs. Over time, it appears more often in AI answers about best tools, alternatives, and shortlist comparisons.",
-    },
-    {
-      title: "Professional services firm improving accuracy",
-      copy: "A consultancy improves service pages, adds definitions and proof-led FAQs, and strengthens internal linking. AI systems begin describing the firm more accurately and citing the right pages more often.",
-    },
-    {
-      title: "Multi-location business improving local relevance",
-      copy: "A business with national coverage improves page structure, location detail, and linking between services and location pages. This helps AI systems respond with more confidence to region-specific prompts.",
-    },
+function AuditOrSupportSection() {
+  return (
+    <StickySplitSection
+      title="Audit or ongoing support: where should you start?"
+      intro="This is usually the most useful decision to make first."
+    >
+      <div className="space-y-4 text-sm leading-relaxed text-zinc-600 md:text-base">
+        <p>
+          If you are early in AI SEO, or you want to understand where you stand before committing to a wider plan, an audit is usually the right place to start. It gives you a practical view of how your business appears in AI search, where competitors are stronger and what to fix first.
+        </p>
+        <p>For many businesses, that is enough to create a sensible roadmap.</p>
+        <p>
+          Ongoing support makes more sense when you already know this matters in your market and want regular visibility tracking, page improvement and clearer priorities over time.
+        </p>
+        <p>A simple way to choose:</p>
+      </div>
+      <div className="mt-6 space-y-4 border-t border-zinc-100 pt-6">
+        <div className="grid gap-3 border-b border-zinc-100 pb-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8">
+          <p className="text-sm leading-relaxed text-zinc-600 md:text-base">
+            Start with an <Link href="/ai-visibility-audit" className="font-medium text-zinc-900 underline underline-offset-2 hover:text-[#1d4ed8]">AI Visibility Audit</Link> if you want clarity, prioritisation and a defined starting point.
+          </p>
+          <div className="flex-shrink-0">
+            <PrimaryCta href="/ai-visibility-audit" label="Get an audit" />
+          </div>
+        </div>
+        <div className="grid gap-3 pt-2 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8">
+          <p className="text-sm leading-relaxed text-zinc-600 md:text-base">
+            Explore <Link href="/aeo-agency" className="font-medium text-zinc-900 underline underline-offset-2 hover:text-[#1d4ed8]">AEO agency support</Link> if you want ongoing measurement, page improvements and regular support over time.
+          </p>
+          <div className="flex-shrink-0">
+            <PrimaryCta href="/aeo-agency" label="Explore support" />
+          </div>
+        </div>
+      </div>
+      <p className="mt-6 text-sm leading-relaxed text-zinc-500">The goal is not to start with the biggest option. It is to start with the right one.</p>
+    </StickySplitSection>
+  );
+}
+
+function WhoBenefitsSection() {
+  const businesses = [
+    "B2B service businesses in competitive categories",
+    "SaaS companies where shortlist searches and alternatives matter",
+    "agencies with specialist positioning",
+    "consultancies and professional services firms",
+    "businesses with decent websites but unclear differentiation",
+    "companies where the sales journey starts with online research",
   ];
 
   return (
     <StickySplitSection
-      label="Examples"
-      title="Typical examples"
-      intro="Here are a few common ways this work shows up in practice."
+      title="Which businesses benefit most first"
+      intro="AI SEO is not equally urgent for every business. The businesses that usually benefit first are the ones where buyers already research online, compare providers in detail and rely on trust before getting in touch."
     >
-      <ol className="list-none space-y-0">
-        {examples.map((ex, index) => (
-          <li
-            key={ex.title}
-            className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 gap-y-2 border-b border-zinc-100 py-8 first:pt-0 last:border-b-0 last:pb-0 md:gap-x-8 md:py-10"
-          >
-            <span className="select-none text-2xl font-semibold tabular-nums leading-none text-zinc-300 md:text-3xl" aria-hidden>
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <h3 className="text-base font-semibold text-zinc-900">{ex.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">{ex.copy}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-      <div className="mt-8">
-        <PrimaryCta href="/aeo-agency" label="Explore AEO agency support" />
+      <div className="space-y-4 text-sm leading-relaxed text-zinc-600 md:text-base">
+        <ul className="list-disc space-y-2 pl-5 marker:text-zinc-500">
+          {businesses.map((item) => (
+            <li key={item} className="pl-1">{item}</li>
+          ))}
+        </ul>
+        <p>
+          You are also more likely to benefit earlier if competitors are appearing more often in AI-led search, if your market is comparison-heavy, or if your site is reasonably strong but not especially easy to summarise.
+        </p>
       </div>
     </StickySplitSection>
   );
 }
 
-function GoodReportingSection() {
-  const items = [
-    "which prompts are being tracked",
-    "how often your brand is mentioned",
-    "whether your site is being cited as a source",
-    "which competitors are being recommended",
-    "how visibility changes over time",
-    "what to fix next, in priority order",
-  ];
-
-  return (
-    <StickySplitSection
-      label="Reporting"
-      title="What good reporting should include"
-      intro="A useful AEO report should do more than say visibility is improving."
-    >
-      <p className="text-sm leading-relaxed text-zinc-600 md:text-base">It should show:</p>
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-600 marker:text-zinc-500 md:text-base">
-        {items.map((item) => (
-          <li key={item} className="pl-1">
-            {item}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-6 text-sm leading-relaxed text-zinc-600 md:text-base">
-        That is what turns AEO from a vague idea into something your team can actually act on.
-      </p>
-      <div className="mt-8">
-        <PrimaryCta href="/contact" label="Talk to Tilio" />
-      </div>
-    </StickySplitSection>
-  );
-}
-
-function CommonQuestionsSection() {
+function FaqSection() {
   const faqs = [
     {
-      question: "What is the difference between SEO and AEO?",
-      answer:
-        "SEO focuses on visibility in traditional search results. AEO focuses on helping your brand get mentioned and cited inside AI-generated answers. The two overlap, but AEO puts more emphasis on clarity, extractability, credibility, and citation-worthiness.",
+      q: "What is AI SEO for UK businesses?",
+      a: "AI SEO is the process of making your site easier for AI systems to understand, describe and cite in AI-generated answers. In practice, that usually means improving your key pages, tightening site structure, reducing ambiguity and strengthening trust signals.",
     },
     {
-      question: "How long does AEO take to work?",
-      answer:
-        "Some improvements can appear within weeks for specific prompts, especially when content clarity and page structure improve quickly. More consistent gains usually take a few months as pages are re-evaluated and selected more often over time.",
+      q: "Is AI SEO the same as AEO?",
+      a: "They overlap. AI SEO is the broader term and is often easier for businesses to understand. AEO is more specific and usually refers to improving how your brand appears in answer-led search experiences. On this page, we use AI SEO as the lead term and AEO as the more specialist term within it.",
     },
     {
-      question: "Can AEO guarantee that my brand will be cited?",
-      answer:
-        "No. There is no guaranteed placement in ChatGPT, Google AI Overviews, or other AI systems. What AEO can do is improve the likelihood that your brand is selected, described accurately, and cited more often.",
+      q: "Do UK businesses need a different AI SEO approach?",
+      a: "Not a completely different one, but the priorities are often different. Most UK businesses do not need a huge AI content programme straight away. They usually get more value from improving commercial pages, clarifying positioning and fixing the structural issues that make the site harder to interpret.",
     },
     {
-      question: "Which businesses benefit most from AEO?",
-      answer:
-        "AEO is especially useful in markets where buyers compare providers, evaluate pricing, and look for trusted recommendations before enquiring. That includes SaaS, professional services, finance, healthcare, education, and many local or regional services.",
+      q: "Which pages should I improve first?",
+      a: "Usually the pages closest to buying intent. That includes service pages, pricing pages, comparison pages, FAQs and proof-led pages. These are the pages that help buyers understand what you do and whether you are a good fit.",
     },
     {
-      question: "What is the best place to start?",
-      answer:
-        "The best starting point is usually a baseline. That means understanding how often you are currently mentioned and cited, which competitors are winning, and which pages or topics are most likely to influence AI visibility.",
+      q: "Should I start with an audit or ongoing support?",
+      a: "If you want a practical starting point and a clearer view of what to fix first, start with an audit. If you already know AI SEO matters in your market and want regular support to improve visibility over time, ongoing support is usually the better fit.",
     },
   ];
 
   return (
     <SectionFrame>
-      <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">Common questions</h2>
-      <div className="mx-auto mt-8 max-w-4xl space-y-4">
+      <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">FAQs</h2>
+      <div className="mt-8 max-w-4xl space-y-4">
         {faqs.map((faq) => (
-          <details key={faq.question} className="group rounded-xl border border-zinc-200 bg-background p-5">
+          <details key={faq.q} className="group rounded-xl border border-zinc-200 bg-background p-5">
             <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-sm font-semibold text-zinc-900">
-              <span>{faq.question}</span>
+              <span>{faq.q}</span>
               <span className="text-zinc-500 transition-transform group-open:rotate-45">+</span>
             </summary>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-600">{faq.answer}</p>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600">{faq.a}</p>
           </details>
         ))}
-      </div>
-      <div className="mt-8">
-        <PrimaryCta href="/ai-visibility-audit" label="Get an AI Visibility Audit" />
-      </div>
-    </SectionFrame>
-  );
-}
-
-function FinalSection() {
-  return (
-    <SectionFrame className="py-16 md:py-20">
-      <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">Next steps</h2>
-      <div className="mt-6 max-w-4xl space-y-4 text-sm leading-relaxed text-zinc-600 md:text-base">
-        <p>If you want ongoing support, explore our AEO agency service.</p>
-        <p>If you want a fast, practical starting point, begin with an AI Visibility Audit.</p>
-        <p>
-          Based in Exeter, we support businesses across the UK with AEO work built around real buyer questions, clear reporting, and practical next steps.
-        </p>
-      </div>
-      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <PrimaryCta href="/aeo-agency" label="Explore AEO agency support" />
-        <PrimaryCta href="/ai-visibility-audit" label="Get an AI Visibility Audit" />
-        <PrimaryCta href="/contact" label="Talk to Tilio" />
       </div>
     </SectionFrame>
   );

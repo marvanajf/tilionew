@@ -12,49 +12,11 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/pricing",
 });
 
-type DeliverableGroup = {
-  heading: string;
-  items: string[];
-};
-
-const deliverableGroups: DeliverableGroup[] = [
-  {
-    heading: "Monitoring and benchmarking",
-    items: [
-      "Daily tracking across ChatGPT, Perplexity, and Google AI Overviews",
-      "100 prompts covering your priority commercial questions",
-      "Competitor benchmarking — see how you compare on the same queries",
-      "English language",
-    ],
-  },
-  {
-    heading: "Content work each month",
-    items: [
-      "3 content pieces — new or updated, written to be cited by AI systems",
-      "3 content optimisations — existing pages improved based on monitoring findings",
-    ],
-  },
-  {
-    heading: "Actions and reporting",
-    items: [
-      "4 prioritised opportunities each week — specific actions to improve visibility",
-      "Monthly report with findings, trends, and recommended next steps",
-      "Onboarding call to align on your domains, prompts, and priority questions",
-    ],
-  },
-  {
-    heading: "Attribution and setup",
-    items: [
-      "AI traffic attribution via Google Analytics integration",
-      "Unlimited domains",
-    ],
-  },
-];
 
 const pricingFaqs: { q: string; a: string }[] = [
   {
     q: "What is included in the £499/month plan?",
-    a: "The programme includes daily monitoring across ChatGPT, Perplexity, and Google AI Overviews using 100 tracked prompts. Each month you receive 3 new or updated content pieces and 3 content optimisations, plus 4 prioritised actions per week. We deliver a monthly report covering findings, visibility trends, and recommended next steps, as well as AI traffic attribution via Google Analytics. There is no API access or raw data export on this plan.",
+    a: "The programme includes daily monitoring across ChatGPT, Perplexity, and Google AI Overviews using 100 tracked prompts. Each month you receive 3 new or updated content pieces and 3 content optimisations, plus 4 prioritised actions per week. We deliver a monthly report covering findings, visibility trends, and recommended next steps, as well as AI traffic attribution via Google Analytics.",
   },
   {
     q: "Who is this plan for?",
@@ -98,43 +60,72 @@ export default function PricingPage() {
       />
 
       <MarketingFramedSection id="whats-included">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <h2 className="text-center text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">What you get each month</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-zinc-600 md:text-base">
-              Everything included in the £499/month programme. We do the monitoring, analysis, and content work — you get clear recommendations and direct support.
-            </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">What you get each month</h2>
+          <p className="mt-3 text-sm leading-relaxed text-zinc-500 md:text-base">Monthly deliverables included in the £499/month programme.</p>
+        </div>
 
-            <div className="mt-10 space-y-8">
-              {deliverableGroups.map((group) => (
-                <div key={group.heading}>
-                  <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">{group.heading}</h3>
-                  <ul className="mt-3 space-y-2">
-                    {group.items.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-700 md:text-base">
-                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-zinc-400" aria-hidden />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+        <div className="mx-auto mt-12 max-w-5xl">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-background shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+            <div className="grid grid-cols-2 border-b border-zinc-200">
+              <div className="px-4 py-3 text-sm font-semibold tracking-tight text-zinc-700 md:px-6">Deliverable</div>
+              <div className="px-4 py-3 text-center md:px-6">
+                <p className="text-xs font-medium tracking-tight text-zinc-500">AEO programme</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-900">£499/month</p>
+              </div>
             </div>
 
-            <p className="mt-8 text-sm leading-relaxed text-zinc-500">
-              API access and raw data exports are not included on this plan.
-            </p>
-
-            <div className="mt-10 text-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-[10px] border border-[#93c5fd] bg-[#93c5fd]/20 px-7 py-2.5 text-sm font-medium text-[#1d4ed8] transition-colors hover:bg-[#93c5fd] hover:text-[#1e3a8a]"
-              >
-                Contact us
-              </Link>
+            <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
+              <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Monitoring</div>
             </div>
+            {([
+              ["Platforms tracked", "ChatGPT, Perplexity, Google AI Overviews"],
+              ["Tracked prompts", "100 prompts, monitored daily"],
+              ["Competitor benchmarking", "Included"],
+              ["Language", "English"],
+            ] as [string, string][]).map(([label, value]) => (
+              <div key={label} className="grid grid-cols-2 border-b border-zinc-100">
+                <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>
+                <div className="px-4 py-3 text-sm font-medium text-zinc-900 md:px-6">{value}</div>
+              </div>
+            ))}
+
+            <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
+              <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Content and actions</div>
+            </div>
+            {([
+              ["Content pieces", "3 per month — new or updated, written to be cited"],
+              ["Content optimisations", "3 per month — existing pages improved from monitoring"],
+              ["Prioritised actions", "4 per week — specific opportunities to improve visibility"],
+              ["Onboarding call", "Included"],
+            ] as [string, string][]).map(([label, value]) => (
+              <div key={label} className="grid grid-cols-2 border-b border-zinc-100">
+                <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>
+                <div className="px-4 py-3 text-sm font-medium text-zinc-900 md:px-6">{value}</div>
+              </div>
+            ))}
+
+            <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
+              <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Reporting and attribution</div>
+            </div>
+            {([
+              ["Monthly report", "Findings, trends and next steps"],
+              ["AI traffic attribution", "Google Analytics integration"],
+              ["Domains", "Unlimited"],
+            ] as [string, string][]).map(([label, value]) => (
+              <div key={label} className="grid grid-cols-2 border-b border-zinc-100 last:border-b-0">
+                <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>
+                <div className="px-4 py-3 text-sm font-medium text-zinc-900 md:px-6">{value}</div>
+              </div>
+            ))}
           </div>
-        </Container>
+
+          <div className="mt-8 text-center">
+            <Link href="/contact" className="text-sm font-medium text-zinc-900 underline underline-offset-4">
+              Get in touch
+            </Link>
+          </div>
+        </div>
       </MarketingFramedSection>
 
       <MarketingFramedSection>
