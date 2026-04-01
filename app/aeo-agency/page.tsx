@@ -23,6 +23,7 @@ export default function AeoAgencyPage() {
         secondaryCta={{ href: "/pricing", label: "View pricing for the £499/month AEO plan" }}
       />
       <IntroSection />
+      <ProfoundSection />
       <FitSection />
       <ExplanationSection />
       <WhatYouGetSection />
@@ -491,6 +492,44 @@ function WhyChooseUsSection() {
         </div>
       </div>
     </StickySplitSection>
+  );
+}
+
+function ProfoundSection() {
+  return (
+    <section className="relative overflow-hidden bg-background py-16 md:py-20">
+      <div className="pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-7xl px-6 lg:px-8" aria-hidden>
+        <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(24,24,27,0.085)_1px,transparent_1px)] bg-[length:12px_12px] md:bg-[length:14px_14px]" />
+      </div>
+      <div className="pointer-events-none absolute inset-0 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="relative h-full">
+          <div className="absolute left-0 right-0 top-0 h-[0.5px] bg-zinc-200" />
+          <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-zinc-200" />
+          <div className="absolute left-0 top-0 h-full w-[0.5px] border-l border-dashed border-zinc-300" />
+          <div className="absolute right-0 top-0 h-full w-[0.5px] border-r border-dashed border-zinc-300" />
+        </div>
+      </div>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-sm font-medium text-zinc-500">Data infrastructure</p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
+            Powered by Profound
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-zinc-600 md:text-base">
+            Our AI search visibility data runs on{" "}
+            <a
+              href="https://www.tryprofound.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-zinc-900 underline underline-offset-2 hover:text-[#1d4ed8]"
+            >
+              Profound's platform
+            </a>
+            , giving us structured, reliable signal on how AI systems are describing and citing your brand across ChatGPT, Perplexity, Google AI Overviews, and more.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
