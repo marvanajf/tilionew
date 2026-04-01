@@ -12,7 +12,7 @@ export async function getAllPostSlugs(): Promise<string[]> {
     return [];
   }
 
-  const slugs = await client.fetch<string[]>(postSlugsQuery);
+  const slugs = await client.fetch<string[]>(postSlugsQuery, {}, { next: { tags: ["blog"] } });
   if (!Array.isArray(slugs)) return [];
   return slugs.map((s) => s.replace(/^\/+/, ""));
 }
@@ -23,7 +23,7 @@ export async function getAllPosts(): Promise<SanityPost[]> {
     return [];
   }
 
-  const rows = await client.fetch<RawList[]>(postListQuery);
+  const rows = await client.fetch<RawList[]>(postListQuery, {}, { next: { tags: ["blog"] } });
   if (!Array.isArray(rows)) {
     return [];
   }
@@ -37,9 +37,9 @@ export async function getPostBySlug(slug: string): Promise<SanityPost | null> {
     return null;
   }
 
-  let row = await client.fetch<RawList | null>(postBySlugQuery, { slug });
+  let row = await client.fetch<RawList | null>(postBySlugQuery, { slug }, { next: { tags: ["blog"] } });
   if (!row) {
-    row = await client.fetch<RawList | null>(postBySlugQuery, { slug: `/${slug}` });
+    row = await client.fetch<RawList | null>(postBySlugQuery, { slug: `/${slug}` }, { next: { tags: ["blog"] } });
   }
   if (!row || !row.slug) {
     return null;

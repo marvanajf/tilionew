@@ -93,6 +93,39 @@ export function ArticleJsonLd({ title, description, slug, publishedAt, updatedAt
   );
 }
 
+export function AiCheckerWebAppJsonLd() {
+  const url = `${siteConfig.siteUrl}/ai-checker`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "AI Overview Checker",
+    alternateName: ["AI Visibility Checker", "AI Search Readiness Tool", "Free AI Overview Checker"],
+    description:
+      "Free tool to check how your brand appears in AI overviews from Google, ChatGPT, and Perplexity. Analyse visibility signals and get an instant readiness score.",
+    url,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "GBP",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Tilio",
+      url: siteConfig.siteUrl,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 type BreadcrumbItem = {
   name: string;
   url: string;

@@ -4,7 +4,7 @@ import { blogIndexRoute, legalRoutes, marketingRoutes } from "@/lib/routes";
 import { getAllPosts } from "@/lib/sanity/api";
 import { siteConfig } from "@/lib/site-config";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();

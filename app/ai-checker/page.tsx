@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { AiCheckerHeroForm, AiCheckerProvider, AiCheckerResultsSection } from "@/components/ai-checker/ai-checker-experience";
 import { AiCheckerPageSections } from "@/components/ai-checker/ai-checker-page-sections";
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { AiCheckerWebAppJsonLd } from "@/components/seo/json-ld";
 import { MarketingHero } from "@/components/marketing/sections";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -15,6 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function AiCheckerPage() {
   return (
     <AiCheckerProvider>
+      <AiCheckerWebAppJsonLd />
       <MarketingHero
         eyebrow="AI Visibility Checker"
         title="Understand how often AI systems mention your brand."
