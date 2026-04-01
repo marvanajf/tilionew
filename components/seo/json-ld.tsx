@@ -138,6 +138,74 @@ export function AiCheckerWebAppJsonLd() {
   );
 }
 
+type WebPageJsonLdProps = {
+  name: string;
+  description: string;
+  url: string;
+  datePublished?: string;
+  dateModified?: string;
+};
+
+export function WebPageJsonLd({ name, description, url, datePublished, dateModified }: WebPageJsonLdProps) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": url,
+    url,
+    name,
+    description,
+    inLanguage: "en-GB",
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${siteConfig.siteUrl}/#website`,
+      url: siteConfig.siteUrl,
+      name: siteConfig.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+    ...(datePublished ? { datePublished } : {}),
+    ...(dateModified ? { dateModified } : {}),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export function FaqPageJsonLd({ questions }: { questions: FaqItem[] }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 type BreadcrumbItem = {
   name: string;
   url: string;

@@ -13,6 +13,7 @@ const servicesItems = [
 const resourcesItems = [
   { href: "/blog", label: "Blog" },
   { href: "/ai-checker", label: "AI Checker" },
+  { href: "/how-we-measure-ai-visibility", label: "How we measure visibility" },
 ];
 
 const siteName = "Tilio";
