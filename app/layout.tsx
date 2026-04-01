@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { baseMetadata } from "@/components/seo/metadata";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

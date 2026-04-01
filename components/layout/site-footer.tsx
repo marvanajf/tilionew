@@ -23,7 +23,7 @@ const companyLinks = [
   { href: "/terms-of-service", label: "Terms" },
 ];
 
-const logoUrl = "https://res.cloudinary.com/ddsqkll4f/image/upload/v1774819696/AEO_499month_6_oomwrq.png";
+const logoUrl = "https://res.cloudinary.com/ddsqkll4f/image/upload/q_auto/f_auto/v1775048162/Untitled_design_36_dkgwxb.png";
 const siteName = "Tilio";
 const companyNumber = "16563350";
 
@@ -31,10 +31,16 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-zinc-200 bg-background">
+    <footer className="relative mt-auto border-t border-zinc-200 bg-background">
+      <div className="pointer-events-none absolute inset-0 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="relative h-full">
+          <div className="absolute left-0 top-0 h-full w-[0.5px] border-l border-dashed border-zinc-300" />
+          <div className="absolute right-0 top-0 h-full w-[0.5px] border-r border-dashed border-zinc-300" />
+        </div>
+      </div>
       <Container className="py-14 text-sm text-zinc-600">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1fr]">
-          <div className="max-w-sm space-y-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1fr] divide-y md:divide-y-0 md:divide-x divide-dashed divide-zinc-200">
+          <div className="max-w-sm space-y-4 pb-10 md:pb-0 md:pr-10">
             <Link href="/" className="inline-flex items-center text-zinc-900">
               {logoUrl ? (
                 <Image
@@ -69,7 +75,7 @@ export function SiteFooter() {
           <FooterColumn title="Services" links={serviceLinks} />
           <FooterColumn title="Resources" links={resourceLinks} />
 
-          <div>
+          <div className="pt-10 md:pt-0 md:px-10 pb-0">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-zinc-900">Company</h2>
             <ul className="mt-4 space-y-3">
               {companyLinks.map((item) => (
@@ -96,7 +102,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-zinc-300 pt-6 text-xs text-zinc-500">
+        <div className="mt-12 border-t border-dashed border-zinc-300 pt-6 text-xs text-zinc-500">
           <p>
             {`© ${year} ${siteName}. All rights reserved.`}
           </p>
@@ -115,7 +121,7 @@ function FooterColumn({
   links: { href: string; label: string }[];
 }) {
   return (
-    <div>
+    <div className="py-10 md:py-0 md:px-10">
       <h2 className="text-xs font-semibold uppercase tracking-wide text-zinc-900">{title}</h2>
       <ul className="mt-4 space-y-3">
         {links.map((item) => (

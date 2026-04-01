@@ -16,7 +16,7 @@ const resourcesItems = [
 ];
 
 const siteName = "Tilio";
-const logoUrl = "https://res.cloudinary.com/ddsqkll4f/image/upload/v1774819696/AEO_499month_6_oomwrq.png";
+const logoUrl = "https://res.cloudinary.com/ddsqkll4f/image/upload/q_auto/f_auto/v1775048162/Untitled_design_36_dkgwxb.png";
 
 function ContactCta({ className = "" }: { className?: string }) {
   return (
