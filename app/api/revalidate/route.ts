@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-  revalidateTag("blog");
+  revalidateTag("blog", {});
   revalidatePath("/blog", "page");
   revalidatePath("/sitemap.xml");
 
