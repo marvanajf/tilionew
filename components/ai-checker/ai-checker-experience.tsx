@@ -143,9 +143,9 @@ export function AiCheckerResultsSection() {
   return (
     <MarketingFramedSection id="ai-checker-results" className="scroll-mt-24">
       <div className="mx-auto max-w-2xl">
-        <h2 className="text-center text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">Snapshot AI Visibility results</h2>
+        <h2 className="text-center text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">Technical readiness results</h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-zinc-600 md:text-base">
-          Technical signals for how crawlers and on-page metadata may affect AI-related discovery—not a guarantee of placement.
+          A snapshot of the technical signals that affect whether AI systems can access and interpret your site — not a measure of live mentions or citations.
         </p>
 
         {loading ? (

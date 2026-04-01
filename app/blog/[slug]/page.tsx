@@ -125,17 +125,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const toc = extractTocFromBody(post.body);
-  const postUrl = `${siteConfig.siteUrl}/blog/${slug}`;
+  const baseUrl = siteConfig.siteUrl.replace(/\/$/, "");
+  const rawCanonical = post.canonicalUrl?.trim();
+  const postUrl = rawCanonical
+    ? rawCanonical.startsWith("http")
+      ? rawCanonical
+      : `${baseUrl}${rawCanonical.startsWith("/") ? "" : "/"}${rawCanonical}`
+    : `${baseUrl}/blog/${slug}`;
 
   return (
     <article>
       <ArticleJsonLd
         title={post.title}
         description={post.excerpt ?? post.title}
-        slug={slug}
+        url={postUrl}
         publishedAt={post.publishedAt}
         updatedAt={post.updatedAt}
         imageUrl={post.featuredImage?.url ?? undefined}
+        author={post.author ? { name: post.author.name, linkedin: post.author.linkedin } : undefined}
       />
       <BreadcrumbJsonLd
         items={[
@@ -153,6 +160,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p className="text-sm text-zinc-500">{formatDate(post.publishedAt)}</p>
             <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl">{post.title}</h1>
             {post.excerpt ? <p className="mt-6 text-base leading-relaxed text-zinc-600 md:text-lg">{post.excerpt}</p> : null}
+            {post.author ? (
+              <p className="mt-5 text-sm text-zinc-500">
+                {"By "}
+                <span className="font-medium text-zinc-700">{post.author.name}</span>
+                {post.author.role ? <span>{`, ${post.author.role}`}</span> : null}
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

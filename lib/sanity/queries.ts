@@ -1,5 +1,19 @@
 /** GROQ fragments — `post` document type in Sanity Studio must match these field names. */
 
+const authorFields = `
+  author->{
+    name,
+    "slug": slug.current,
+    role,
+    "headshotUrl": headshot.asset->url,
+    "headshotAlt": headshot.alt,
+    bio,
+    linkedin,
+    twitter,
+    website
+  }
+`;
+
 const postCardFields = `
   _id,
   title,
@@ -12,7 +26,8 @@ const postCardFields = `
   featuredImage{
     alt,
     "url": asset->url
-  }
+  },
+  ${authorFields}
 `;
 
 const postBodyFields = `

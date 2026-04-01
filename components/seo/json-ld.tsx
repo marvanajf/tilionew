@@ -4,9 +4,14 @@ export function OrganizationJsonLd() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Tilio",
+    "@id": `${siteConfig.siteUrl}/#organization`,
+    name: siteConfig.name,
     url: siteConfig.siteUrl,
-    logo: "https://res.cloudinary.com/ddsqkll4f/image/upload/v1774819696/AEO_499month_6_oomwrq.png",
+    logo: {
+      "@type": "ImageObject",
+      url: siteConfig.logoUrl,
+      contentUrl: siteConfig.logoUrl,
+    },
     description: siteConfig.description,
     foundingLocation: {
       "@type": "Place",
@@ -16,24 +21,11 @@ export function OrganizationJsonLd() {
       "@type": "Country",
       name: "United Kingdom",
     },
-    sameAs: ["https://www.linkedin.com/company/trytilio/"],
+    sameAs: [siteConfig.linkedIn],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
       url: `${siteConfig.siteUrl}/contact`,
-    },
-    offers: {
-      "@type": "Offer",
-      name: "Managed AEO Plan",
-      price: "499",
-      priceCurrency: "GBP",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "499",
-        priceCurrency: "GBP",
-        unitText: "MONTH",
-      },
-      url: `${siteConfig.siteUrl}/pricing`,
     },
   };
 
@@ -45,42 +37,62 @@ export function OrganizationJsonLd() {
   );
 }
 
+type BlogPostAuthor = {
+  name: string;
+  linkedin?: string;
+};
+
 type ArticleJsonLdProps = {
   title: string;
   description: string;
-  slug: string;
+  url: string;
   publishedAt: string;
   updatedAt?: string;
   imageUrl?: string;
+  author?: BlogPostAuthor;
 };
 
-export function ArticleJsonLd({ title, description, slug, publishedAt, updatedAt, imageUrl }: ArticleJsonLdProps) {
-  const url = `${siteConfig.siteUrl}/blog/${slug}`;
+export function ArticleJsonLd({ title, description, url, publishedAt, updatedAt, imageUrl, author }: ArticleJsonLdProps) {
+  const resolvedAuthor = author
+    ? {
+        "@type": "Person",
+        name: author.name,
+        ...(author.linkedin ? { sameAs: [author.linkedin] } : {}),
+      }
+    : {
+        "@type": "Organization",
+        "@id": `${siteConfig.siteUrl}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.siteUrl,
+      };
+
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: title,
     description,
     url,
     datePublished: publishedAt,
     ...(updatedAt ? { dateModified: updatedAt } : {}),
-    author: {
-      "@type": "Organization",
-      name: "Tilio",
-      url: siteConfig.siteUrl,
-    },
+    author: resolvedAuthor,
     publisher: {
       "@type": "Organization",
-      name: "Tilio",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.name,
       url: siteConfig.siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: "https://res.cloudinary.com/ddsqkll4f/image/upload/v1774819696/AEO_499month_6_oomwrq.png",
+        url: siteConfig.logoUrl,
+        contentUrl: siteConfig.logoUrl,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
+    },
+    isPartOf: {
+      "@type": "Blog",
+      "@id": `${siteConfig.siteUrl}/blog`,
     },
     ...(imageUrl ? { image: imageUrl } : {}),
   };

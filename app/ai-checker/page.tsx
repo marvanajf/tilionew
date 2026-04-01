@@ -19,10 +19,10 @@ export default function AiCheckerPage() {
       <AiCheckerWebAppJsonLd />
       <MarketingHero
         eyebrow="AI Visibility Checker"
-        title="Understand how often AI systems mention your brand."
-        description="A practical checker workflow that highlights where you appear, where you are absent, and where competitors dominate citations."
-        primaryCta={{ href: "/contact", label: "Request a checker run" }}
-        secondaryCta={{ href: "/ai-visibility-audit", label: "Compare with full audit" }}
+        title="Check whether your site is technically ready for AI search."
+        description="A fast technical readiness check covering crawler access, structured data, metadata, and key on-page signals. Get an instant score and a clear list of what to fix."
+        primaryCta={{ href: "/contact", label: "Get in touch" }}
+        secondaryCta={{ href: "/ai-visibility-audit", label: "See the full AI Visibility Audit" }}
       >
         <AiCheckerHeroForm />
       </MarketingHero>

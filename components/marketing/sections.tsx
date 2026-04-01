@@ -308,12 +308,12 @@ export function VisibilitySourcesSection() {
             />
             <div className="relative z-10 px-6 py-10 text-center md:px-10 md:py-14">
               <div className="mx-auto max-w-3xl space-y-4">
-                <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">£499 a month. Content and analytics.</h2>
+                <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">£499 a month. Managed AEO programme.</h2>
                 <div className="space-y-3 text-sm font-light leading-normal text-zinc-600 md:text-base">
                   <p>
-                    One monthly programme for UK teams who want to show up when people ask ChatGPT, Perplexity, and Google AI Overviews for
-                    recommendations. We ship answer-ready content, tighten the on-page signals those systems read, and report mentions, citations,
-                    and what to do next. No vanity metrics. Just work that compounds.
+                    A monthly programme for UK teams who want to show up when people ask ChatGPT, Perplexity, and Google AI Overviews for
+                    recommendations. We handle the monitoring, produce answer-ready content each month, and report back with clear findings and
+                    prioritised next steps. Done with you — or done for you.
                   </p>
                 </div>
                 <div className="pt-1">
@@ -337,28 +337,28 @@ export function VisibilitySourcesSection() {
 
           <div className="mt-16 border-t border-zinc-200 pt-14 md:mt-20 md:pt-18">
             <div className="mx-auto max-w-3xl text-center">
-              <h3 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">What&apos;s included in the AEO plan</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-500 md:text-base">Monthly deliverables and capabilities included in the AEO plan.</p>
+              <h3 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">What you get each month</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-500 md:text-base">Monthly deliverables included in the £499/month programme.</p>
             </div>
 
             <div className="mx-auto mt-12 max-w-5xl">
               <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-background shadow-[0_1px_0_rgba(0,0,0,0.02)]">
               <div className="grid grid-cols-2 border-b border-zinc-200">
-                <div className="px-4 py-3 text-sm font-semibold tracking-tight text-zinc-700 md:px-6">Features</div>
+                <div className="px-4 py-3 text-sm font-semibold tracking-tight text-zinc-700 md:px-6">Deliverable</div>
                 <div className="px-4 py-3 text-center md:px-6">
-                  <p className="text-xs font-medium tracking-tight text-zinc-500">AEO plan</p>
+                  <p className="text-xs font-medium tracking-tight text-zinc-500">AEO programme</p>
                   <p className="mt-1 text-sm font-semibold text-zinc-900">£499/month</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
-                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Platforms and prompts</div>
+                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Monitoring</div>
               </div>
               {[
                 ["Platforms tracked", "ChatGPT, Perplexity, Google AI Overviews"],
-                ["Question slots per month", "130 unique prompts"],
-                ["Prompt frequency", "Daily"],
-                ["Language", "EN"],
+                ["Tracked prompts", "100 prompts, monitored daily"],
+                ["Competitor benchmarking", "Included"],
+                ["Language", "English"],
               ].map(([label, value]) => (
                 <div key={label} className="grid grid-cols-2 border-b border-zinc-100">
                   <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>
@@ -367,12 +367,12 @@ export function VisibilitySourcesSection() {
               ))}
 
               <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
-                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Content and opportunities</div>
+                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Content and actions</div>
               </div>
               {[
-                ["Content gap alerts", "3 pieces/month"],
-                ["Content generation", "3 pieces/month"],
-                ["Opportunities", "4 opportunities/week"],
+                ["Content recommendations", "3 per month"],
+                ["Content pieces", "3 per month"],
+                ["Prioritised actions", "4 per week"],
               ].map(([label, value]) => (
                 <div key={label} className="grid grid-cols-2 border-b border-zinc-100">
                   <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>
@@ -381,38 +381,12 @@ export function VisibilitySourcesSection() {
               ))}
 
               <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
-                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Website and growth</div>
+                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Reporting and attribution</div>
               </div>
               {[
-                ["Widgets", "Track AI sourced traffic and attribution across your funnels"],
+                ["Monthly report", "Findings, trends and next steps"],
+                ["AI traffic attribution", "Google Analytics integration"],
                 ["Domains", "Unlimited"],
-              ].map(([label, value]) => (
-                <div key={label} className="grid grid-cols-2 border-b border-zinc-100">
-                  <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>
-                  <div className="px-4 py-3 text-sm font-medium text-zinc-900 md:px-6">{value}</div>
-                </div>
-              ))}
-
-              <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
-                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Integrations and data</div>
-              </div>
-              {[
-                ["Integrations", "Google Analytics"],
-                ["Data", "Power your reporting and workflows"],
-              ].map(([label, value]) => (
-                <div key={label} className="grid grid-cols-2 border-b border-zinc-100">
-                  <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>
-                  <div className="px-4 py-3 text-sm font-medium text-zinc-900 md:px-6">{value}</div>
-                </div>
-              ))}
-
-              <div className="grid grid-cols-2 border-b border-zinc-100 bg-zinc-50">
-                <div className="col-span-2 px-4 py-2 text-xs font-semibold tracking-tight text-zinc-600 md:px-6">Historic reports and API</div>
-              </div>
-              {[
-                ["History", "All time"],
-                ["Export", "CSV, JSON (other workspaces only)"],
-                ["API", "No"],
               ].map(([label, value]) => (
                 <div key={label} className="grid grid-cols-2 border-b border-zinc-100 last:border-b-0">
                   <div className="px-4 py-3 text-sm text-zinc-700 md:px-6">{label}</div>

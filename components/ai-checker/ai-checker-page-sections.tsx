@@ -160,7 +160,7 @@ export function AiCheckerPageSections() {
           <ul className="mt-4 list-none border-y border-zinc-200">
             {[
               "business owners checking whether their site is technically ready for AI search",
-              "marketers looking for a quick answer-engine visibility check",
+              "marketers looking for a quick technical readiness check before a fuller review",
               "agencies reviewing client sites before a deeper audit",
               "teams making updates to robots.txt, structured data, or page metadata",
               "anyone who wants a simple AI visibility checker before investing in a fuller review",

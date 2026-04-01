@@ -70,6 +70,13 @@ export default defineType({
           .warning("Excerpt should be between 50 and 300 characters."),
     }),
     defineField({
+      name: "author",
+      title: "Author",
+      type: "reference",
+      to: [{ type: "author" }],
+      description: "The person who wrote this post. Leave blank to fall back to Tilio as author.",
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "array",
@@ -94,11 +101,14 @@ export default defineType({
     select: {
       title: "title",
       publishedAt: "publishedAt",
+      authorName: "author.name",
     },
-    prepare({ title, publishedAt }) {
+    prepare({ title, publishedAt, authorName }) {
+      const date = publishedAt ? new Date(publishedAt as string).toLocaleDateString("en-GB") : "";
+      const byline = [date, authorName].filter(Boolean).join(" · ");
       return {
         title: title ?? "Untitled",
-        subtitle: publishedAt ? new Date(publishedAt as string).toLocaleDateString("en-GB") : "",
+        subtitle: byline,
       };
     },
   },

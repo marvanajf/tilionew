@@ -4,6 +4,18 @@ export type SanityFeaturedImage = {
   url?: string | null;
 };
 
+export type SanityAuthor = {
+  name: string;
+  slug?: string;
+  role?: string;
+  headshotUrl?: string | null;
+  headshotAlt?: string;
+  bio?: string;
+  linkedin?: string;
+  twitter?: string;
+  website?: string;
+};
+
 export type SanityPost = {
   _id: string;
   title: string;
@@ -15,6 +27,7 @@ export type SanityPost = {
   canonicalUrl?: string;
   featuredImage?: SanityFeaturedImage;
   excerpt?: string;
+  author?: SanityAuthor;
   /** Portable Text blocks */
   body?: unknown;
 };
