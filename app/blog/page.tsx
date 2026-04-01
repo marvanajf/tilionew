@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
@@ -45,6 +46,23 @@ export default async function BlogIndexPage() {
             {posts.map((post) => (
               <li key={post._id} className="max-w-3xl border-b border-zinc-100 pb-8 last:border-b-0">
                 <p className="text-xs text-zinc-500">{formatDate(post.publishedAt)}</p>
+                {post.author ? (
+                  <div className="mt-2 flex items-center gap-2">
+                    {post.author.headshotUrl ? (
+                      <Image
+                        src={post.author.headshotUrl}
+                        alt={post.author.headshotAlt ?? post.author.name}
+                        width={20}
+                        height={20}
+                        className="h-5 w-5 rounded-full object-cover"
+                      />
+                    ) : null}
+                    <span className="text-xs text-zinc-500">
+                      {post.author.name}
+                      {post.author.role ? ` · ${post.author.role}` : ""}
+                    </span>
+                  </div>
+                ) : null}
                 <Link href={`/blog/${post.slug}`} className="mt-2 block text-lg font-semibold tracking-tight text-zinc-900 hover:underline">
                   {post.title}
                 </Link>

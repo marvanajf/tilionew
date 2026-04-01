@@ -158,15 +158,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm text-zinc-500">{formatDate(post.publishedAt)}</p>
-            <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl">{post.title}</h1>
-            {post.excerpt ? <p className="mt-6 text-base leading-relaxed text-zinc-600 md:text-lg">{post.excerpt}</p> : null}
             {post.author ? (
-              <p className="mt-5 text-sm text-zinc-500">
-                {"By "}
-                <span className="font-medium text-zinc-700">{post.author.name}</span>
-                {post.author.role ? <span>{`, ${post.author.role}`}</span> : null}
-              </p>
+              <div className="mt-3 flex items-center justify-center gap-2">
+                {post.author.headshotUrl ? (
+                  <Image
+                    src={post.author.headshotUrl}
+                    alt={post.author.headshotAlt ?? post.author.name}
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 rounded-full object-cover"
+                  />
+                ) : null}
+                <span className="text-sm text-zinc-500">
+                  <span className="font-medium text-zinc-700">{post.author.name}</span>
+                  {post.author.role ? `, ${post.author.role}` : ""}
+                </span>
+              </div>
             ) : null}
+            <h1 className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl">{post.title}</h1>
+            {post.excerpt ? <p className="mt-6 text-base leading-relaxed text-zinc-600 md:text-lg">{post.excerpt}</p> : null}
           </div>
         </div>
       </div>
