@@ -16,6 +16,7 @@ export default function UkAeoSolutionsPage() {
   return (
     <>
       <MarketingHero
+        eyebrow="UK AI SEO"
         title="How UK businesses can improve visibility in AI search"
         description="AI SEO is becoming more important for UK businesses because buyers are using AI tools to research providers, compare options and sense-check decisions before they ever make contact."
         primaryCta={{ href: "/aeo-agency", label: "Explore AEO agency support" }}
