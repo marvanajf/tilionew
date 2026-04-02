@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 const SPACING = 13;
-const RADIUS = 1;
+const RADIUS = 1.2;
 const OPACITY_BUCKETS = 16;
 
 export function HeroDotsCanvas({ className }: { className?: string }) {
@@ -29,7 +29,7 @@ export function HeroDotsCanvas({ className }: { className?: string }) {
           dots.push({
             x,
             y,
-            freq: 0.15 + Math.random() * 0.45,
+            freq: 0.18 + Math.random() * 0.52,
             phase: Math.random() * Math.PI * 2,
           });
         }
@@ -72,7 +72,7 @@ export function HeroDotsCanvas({ className }: { className?: string }) {
       for (let b = 0; b < OPACITY_BUCKETS; b++) {
         const group = buckets[b];
         if (group.length === 0) continue;
-        const opacity = 0.045 + (b / (OPACITY_BUCKETS - 1)) * 0.13;
+        const opacity = 0.058 + (b / (OPACITY_BUCKETS - 1)) * 0.168;
         ctx.fillStyle = `rgba(24,24,27,${opacity.toFixed(3)})`;
         ctx.beginPath();
         for (const dot of group) {
