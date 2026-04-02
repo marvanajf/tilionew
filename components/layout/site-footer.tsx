@@ -7,6 +7,7 @@ const serviceLinks = [
   { href: "/aeo-agency", label: "AEO Services" },
   { href: "/pricing", label: "Pricing" },
   { href: "/ai-visibility-audit", label: "AI visibility audit" },
+  { href: "/working-with-tilio", label: "Working with Tilio" },
   { href: "/ai-checker", label: "Free AI visibility check" },
   { href: "/contact", label: "Get in touch" },
 ];

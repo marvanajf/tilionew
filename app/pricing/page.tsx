@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
 import { MarketingFramedSection, MarketingHero } from "@/components/marketing/sections";
 import { Container } from "@/components/ui/container";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "AEO Pricing | Managed Programme from £499 per Month",
@@ -57,6 +59,15 @@ export default function PricingPage() {
         description="£499 per month. We monitor your AI visibility, produce content each month, surface prioritised actions, and report back with clear findings and next steps. A managed service, not a platform."
         primaryCta={{ href: "/contact", label: "Contact us" }}
         secondaryCta={{ href: "#whats-included", label: "See what's included" }}
+        preTitle={
+          <Image
+            src={siteConfig.logoUrl}
+            alt={siteConfig.name}
+            width={140}
+            height={36}
+            className="h-9 w-auto"
+          />
+        }
       />
 
       <MarketingFramedSection id="whats-included">

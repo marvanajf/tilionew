@@ -32,6 +32,7 @@ export default function HomePage() {
         secondaryCta={{ href: "/ai-checker", label: "Free AI Visibility tool" }}
         secondaryCtaVariant="white"
         size="tall"
+        ambientDots
       >
         <LogoCycler />
       </MarketingHero>

@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode, SVGProps } from "react";
 
+import { HeroDotsCanvas } from "@/components/ui/hero-dots-canvas";
+
 import { Container } from "@/components/ui/container";
 
 type IconProps = SVGProps<SVGSVGElement>;
@@ -67,6 +69,8 @@ type HeroProps = {
   secondaryCtaVariant?: "default" | "white";
   /** Rendered after the description and before the primary/secondary CTAs (e.g. interactive tools). */
   children?: ReactNode;
+  /** Rendered above the title — useful for a logo or badge. */
+  preTitle?: ReactNode;
   bleedBehindHeader?: boolean;
   showFramingLines?: boolean;
   backgroundImageUrl?: string;
@@ -75,6 +79,8 @@ type HeroProps = {
   dotPattern?: boolean;
   /** Taller vertical padding for the hero block. */
   size?: "default" | "tall";
+  /** Soft ambient glow overlays that pulse over the dot grid for a gentle breathing effect. */
+  ambientDots?: boolean;
 };
 
 export function MarketingHero({
@@ -84,12 +90,14 @@ export function MarketingHero({
   secondaryCta,
   secondaryCtaVariant = "default",
   children,
+  preTitle,
   bleedBehindHeader = false,
   showFramingLines = true,
   backgroundImageUrl,
   lightText = false,
   dotPattern = true,
   size = "default",
+  ambientDots = false,
 }: HeroProps) {
   const frameLineClass = lightText || backgroundImageUrl ? "bg-background/40" : "bg-zinc-200";
 
@@ -118,7 +126,11 @@ export function MarketingHero({
           className="pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-7xl px-6 lg:px-8"
           aria-hidden
         >
-          <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(24,24,27,0.085)_1px,transparent_1px)] bg-[length:12px_12px] md:bg-[length:14px_14px]" />
+          {ambientDots ? (
+            <HeroDotsCanvas className="block h-full w-full overflow-hidden" />
+          ) : (
+            <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(24,24,27,0.085)_1px,transparent_1px)] bg-[length:12px_12px] md:bg-[length:14px_14px]" />
+          )}
         </div>
       ) : null}
       {showFramingLines ? (
@@ -133,6 +145,7 @@ export function MarketingHero({
       ) : null}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
+          {preTitle ? <div className="mb-8 flex justify-center">{preTitle}</div> : null}
           <h1
             className={`text-3xl font-medium leading-[1.1] tracking-tight md:text-4xl lg:text-5xl ${
               lightText ? "text-white" : "text-zinc-900"
