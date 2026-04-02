@@ -4,7 +4,8 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 
 const serviceLinks = [
-  { href: "/aeo-agency", label: "AEO Services" },
+  { href: "/aeo-agency", label: "AEO Agency" },
+  { href: "/geo-agency", label: "GEO Agency" },
   { href: "/pricing", label: "Pricing" },
   { href: "/ai-visibility-audit", label: "AI visibility audit" },
   { href: "/working-with-tilio", label: "Working with Tilio" },

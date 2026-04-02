@@ -7,6 +7,7 @@ export const marketingRoutes = [
   "/ai-visibility-audit",
   "/how-we-measure-ai-visibility",
   "/working-with-tilio",
+  "/geo-agency",
   "/about",
   "/contact",
 ] as const;

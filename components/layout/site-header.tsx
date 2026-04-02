@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 
 const servicesItems = [
   { href: "/aeo-agency", label: "AEO Agency" },
+  { href: "/geo-agency", label: "GEO Agency" },
   { href: "/ai-visibility-audit", label: "AI Visibility Audit" },
   { href: "/working-with-tilio", label: "Working with Tilio" },
 ];
