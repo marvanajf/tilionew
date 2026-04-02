@@ -107,6 +107,11 @@ export function MarketingHero({
       ? "pt-20 pb-20 md:pt-28 md:pb-28 lg:pt-36 lg:pb-32"
       : "pt-14 pb-14 md:pt-20 md:pb-20 lg:pt-28 lg:pb-24";
 
+  const titleSizeClass =
+    size === "tall"
+      ? "text-[2rem] font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
+      : "text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-5xl";
+
   return (
     <section
       className={`relative overflow-hidden ${paddingClass}`}
@@ -147,9 +152,7 @@ export function MarketingHero({
         <div className="mx-auto max-w-4xl text-center">
           {preTitle ? <div className="mb-8 flex justify-center">{preTitle}</div> : null}
           <h1
-            className={`text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-5xl ${
-              lightText ? "text-white" : "text-zinc-900"
-            }`}
+            className={`${titleSizeClass} ${lightText ? "text-white" : "text-zinc-900"}`}
           >
             {title}
           </h1>
