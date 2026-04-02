@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // e_trim removes transparent/white padding from the PNG canvas before delivery
 // so the rendered height maps directly to the actual logo artwork, not the padded canvas
@@ -27,46 +27,61 @@ const FADE_MS = 350;
 
 export function LogoCycler() {
   const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [phase, setPhase] = useState<"visible" | "fading">("visible");
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
+
+  const scheduleNext = useCallback(() => {
+    timerRef.current = setTimeout(() => {
+      setPhase("fading");
+      timerRef.current = setTimeout(() => {
+        setIndex((i) => (i + 1) % LOGOS.length);
+        setPhase("visible");
+        scheduleNext();
+      }, FADE_MS);
+    }, SHOW_MS);
+  }, []);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setIndex((i) => (i + 1) % LOGOS.length);
-        setVisible(true);
-      }, FADE_MS);
-    }, SHOW_MS + FADE_MS);
-
-    return () => clearInterval(id);
-  }, []);
+    scheduleNext();
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [scheduleNext]);
 
   const logo = LOGOS[index];
 
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      {/* Preload all logos so there's no fetch/decode stutter on first show */}
-      <div style={{ position: "absolute", width: 0, height: 0, overflow: "hidden", pointerEvents: "none" }} aria-hidden="true">
-        {LOGOS.map((l) => (
-          <img key={l.src} src={l.src} alt="" fetchPriority="high" />
-        ))}
-      </div>
+    <>
+      {/* Preload logos via <link> to avoid Safari decode stutter without DOM overlap */}
+      {LOGOS.map((l) => (
+        <link key={l.src} rel="preload" as="image" href={l.src} />
+      ))}
       <div
         style={{
-          height: 40,
+          position: "relative",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          transition: `opacity ${FADE_MS}ms ease`,
-          opacity: visible ? 1 : 0,
+          height: 40,
+          overflow: "hidden",
         }}
       >
         <img
+          key={logo.src}
           src={logo.src}
           alt={logo.alt}
-          style={{ height: logo.height, width: "auto", display: "block" }}
+          width={0}
+          height={logo.height}
+          style={{
+            height: logo.height,
+            width: "auto",
+            display: "block",
+            transition: `opacity ${FADE_MS}ms ease`,
+            opacity: phase === "visible" ? 1 : 0,
+            willChange: "opacity",
+          }}
         />
       </div>
-    </div>
+    </>
   );
 }
