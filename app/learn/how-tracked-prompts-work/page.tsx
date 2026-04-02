@@ -130,14 +130,16 @@ export default function HowTrackedPromptsWorkPage() {
           </div>
         </div>
 
-        <Container className="relative z-10">
-          <div className="mx-auto max-w-3xl">
+        <Container className="relative z-10 sm:!px-8">
+          <div className="mx-auto max-w-3xl px-3 sm:px-4 md:px-0">
             <nav className="flex items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
               <Link href={learnIndexRoute} className="hover:text-zinc-900">
                 Learn
               </Link>
-              <span aria-hidden>/</span>
-              <span className="text-zinc-400">Measurement</span>
+              <span className="hidden sm:inline" aria-hidden>
+                /
+              </span>
+              <span className="hidden text-zinc-400 sm:inline">Measurement</span>
             </nav>
 
             <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl">
@@ -148,11 +150,9 @@ export default function HowTrackedPromptsWorkPage() {
               If you&rsquo;re looking at AI visibility seriously, one of the first things to understand is the role of tracked prompts.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-zinc-200 pt-5 text-sm text-zinc-500">
-              <span className="inline-flex rounded-md bg-violet-50 px-2 py-0.5 text-xs font-medium text-violet-700">
-                Measurement
-              </span>
-              <span>9 min read</span>
+            <div className="mt-6 flex flex-row flex-wrap items-center gap-x-5 gap-y-2 border-t border-zinc-200 bg-transparent pt-5 text-sm text-zinc-500">
+              <span className="inline-flex shrink-0 rounded-md bg-violet-50 px-2 py-0.5 text-xs font-medium text-violet-700">Measurement</span>
+              <span className="shrink-0">9 min read</span>
             </div>
           </div>
         </Container>
@@ -173,7 +173,7 @@ export default function HowTrackedPromptsWorkPage() {
               <TableOfContents entries={TOC_ENTRIES} postUrl={PAGE_URL} />
             </div>
 
-            <div className="min-w-0 pb-4 lg:pr-8">
+            <div className="min-w-0 px-4 pb-4 sm:px-5 lg:px-0 lg:pr-8">
               <div className="mb-8 lg:hidden">
                 <TocMobile entries={TOC_ENTRIES} />
               </div>

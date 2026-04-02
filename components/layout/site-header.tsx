@@ -14,7 +14,7 @@ const servicesItems = [
 
 const resourcesItems = [
   { href: "/blog", label: "Blog" },
-  { href: "/resources/learn", label: "Learn centre" },
+  { href: "/resources/learn", label: "Learn" },
   { href: "/ai-checker", label: "AI Checker" },
   { href: "/how-we-measure-ai-visibility", label: "How we measure visibility" },
 ];
@@ -134,7 +134,7 @@ export function SiteHeader() {
               </button>
               {menuOpen && (
                 <div className="absolute right-0 mt-2 w-72 rounded-xl border border-zinc-200 bg-background p-3 shadow-xl">
-                  <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500">Services</p>
+                  <p className="px-2 pb-1 text-xs font-semibold tracking-wide text-zinc-500">Services</p>
                   {servicesItems.map((item) => (
                     <Link
                       key={item.href}
@@ -145,7 +145,7 @@ export function SiteHeader() {
                     </Link>
                   ))}
 
-                  <p className="mt-3 px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500">Resources</p>
+                  <p className="mt-3 px-2 pb-1 text-xs font-semibold tracking-wide text-zinc-500">Resources</p>
                   {resourcesItems.map((item) => (
                     <Link
                       key={item.href}

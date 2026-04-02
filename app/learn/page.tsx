@@ -69,7 +69,7 @@ export default function LearnIndexPage() {
           </div>
         </div>
 
-        <Container className="relative z-10">
+        <Container className="relative z-10 sm:!px-8">
           <div className="mx-auto max-w-2xl text-center">
             <nav className="flex justify-center" aria-label="Breadcrumb">
               <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-zinc-500">
@@ -110,7 +110,7 @@ export default function LearnIndexPage() {
             <div className="absolute right-0 top-0 h-full w-[0.5px] border-r border-dashed border-zinc-300" />
           </div>
         </div>
-        <Container>
+        <Container className="sm:!px-8">
           <ul className="mx-auto max-w-3xl space-y-6 pt-10">
             {learnArticles.map((article) => (
               <li key={article.title}>

@@ -100,15 +100,17 @@ export default function MentionsVsCitationsPage() {
           </div>
         </div>
 
-        <Container className="relative z-10">
-          <div className="mx-auto max-w-3xl">
-            {/* Breadcrumb */}
+        <Container className="relative z-10 sm:!px-8">
+          <div className="mx-auto max-w-3xl px-3 sm:px-4 md:px-0">
+            {/* Breadcrumb — category shown in meta on mobile to avoid repeating */}
             <nav className="flex items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
               <Link href={learnIndexRoute} className="hover:text-zinc-900">
                 Learn
               </Link>
-              <span aria-hidden>/</span>
-              <span className="text-zinc-400">Foundations</span>
+              <span className="hidden sm:inline" aria-hidden>
+                /
+              </span>
+              <span className="hidden text-zinc-400 sm:inline">Foundations</span>
             </nav>
 
             {/* Title */}
@@ -122,10 +124,10 @@ export default function MentionsVsCitationsPage() {
               and a citation. They&rsquo;re related, but they&rsquo;re not the same.
             </p>
 
-            {/* Meta strip */}
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-zinc-200 pt-5 text-sm text-zinc-500">
-              <span className="inline-flex rounded-md bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">Foundations</span>
-              <span>7 min read</span>
+            {/* Meta — inset card on small screens; horizontal rule from sm */}
+            <div className="mt-6 flex flex-row flex-wrap items-center gap-x-5 gap-y-2 border-t border-zinc-200 bg-transparent pt-5 text-sm text-zinc-500">
+              <span className="inline-flex shrink-0 rounded-md bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">Foundations</span>
+              <span className="shrink-0">7 min read</span>
             </div>
           </div>
         </Container>
@@ -151,7 +153,7 @@ export default function MentionsVsCitationsPage() {
             </div>
 
             {/* Article */}
-            <div className="min-w-0 pb-4 lg:pr-8">
+            <div className="min-w-0 px-4 pb-4 sm:px-5 lg:px-0 lg:pr-8">
               {/* Mobile TOC — hidden on desktop */}
               <div className="mb-8 lg:hidden">
                 <TocMobile entries={TOC_ENTRIES} />

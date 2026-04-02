@@ -15,7 +15,7 @@ const serviceLinks = [
 
 const resourceLinks = [
   { href: "/blog", label: "Blog" },
-  { href: "/resources/learn", label: "Learn centre" },
+  { href: "/resources/learn", label: "Learn" },
   { href: "/uk-aeo-solutions", label: "UK AEO solutions" },
   { href: "/how-we-measure-ai-visibility", label: "How we measure visibility" },
 ];

@@ -147,7 +147,7 @@ export function MarketingHero({
         <div className="mx-auto max-w-4xl text-center">
           {preTitle ? <div className="mb-8 flex justify-center">{preTitle}</div> : null}
           <h1
-            className={`text-3xl font-medium leading-[1.1] tracking-tight md:text-4xl lg:text-5xl ${
+            className={`text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-5xl ${
               lightText ? "text-white" : "text-zinc-900"
             }`}
           >
