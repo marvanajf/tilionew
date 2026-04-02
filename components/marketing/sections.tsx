@@ -398,6 +398,7 @@ export function VisibilitySourcesSection() {
               </div>
               {[
                 ["Monthly report", "Findings, trends and next steps"],
+                ["Dashboard access", "Live data, check any time"],
                 ["AI traffic attribution", "Google Analytics integration"],
                 ["Domains", "Unlimited"],
               ].map(([label, value]) => (

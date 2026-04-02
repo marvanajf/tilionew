@@ -1,0 +1,30 @@
+export type LearnArticle = {
+  category: string;
+  title: string;
+  description: string;
+  href: string | null;
+};
+
+export const learnArticles: LearnArticle[] = [
+  {
+    category: "Foundations",
+    title: "Mentions vs citations in AI search",
+    description:
+      "Two key signals in AI visibility reporting, why they're related but not the same, and what to look for when reviewing your data.",
+    href: "/learn/mentions-vs-citations-in-ai-search",
+  },
+  {
+    category: "Measurement",
+    title: "How tracked prompts work",
+    description:
+      "What tracked prompts are, why one prompt is never enough, and how prompt groups and buyer intent connect in AI visibility measurement.",
+    href: "/learn/how-tracked-prompts-work",
+  },
+  {
+    category: "Strategy",
+    title: "How competitor benchmarking works in AI search",
+    description:
+      "Fair comparison across brands, shared prompt sets, mentions vs citations in competitive reporting, and how benchmarks turn into AEO priorities.",
+    href: "/learn/how-competitor-benchmarking-works-in-ai-search",
+  },
+];

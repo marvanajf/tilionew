@@ -56,7 +56,7 @@ const FAQ_ITEMS = [
   {
     question: "What do clients receive from Tilio's ongoing AI visibility service?",
     answer:
-      "Clients on ongoing support receive tracking across Google AI Overviews, ChatGPT and Perplexity, 100 tracked prompts monitored daily, competitor benchmarking, 3 content pieces and 3 content optimisations per month, 4 prioritised actions per week, a monthly report, Google Analytics integration for AI traffic attribution, and unlimited domains.",
+      "Clients on ongoing support receive tracking across Google AI Overviews, ChatGPT and Perplexity, 100 tracked prompts monitored daily, competitor benchmarking, 3 content pieces and 3 content optimisations per month, 4 prioritised actions per week, dashboard access to check live data any time, a monthly report, Google Analytics integration for AI traffic attribution, and unlimited domains.",
   },
 ];
 
@@ -490,6 +490,7 @@ function WhatClientsReceiveSection() {
     "4 prioritised actions per week, tied to specific visibility opportunities",
     "an onboarding call",
     "a monthly report covering findings, trends and next steps",
+    "dashboard access — live data, check any time",
     "Google Analytics integration for AI traffic attribution",
     "unlimited domains",
   ];

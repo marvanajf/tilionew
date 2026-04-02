@@ -1,6 +1,13 @@
 import type { MetadataRoute } from "next";
 
-import { blogIndexRoute, legalRoutes, marketingRoutes } from "@/lib/routes";
+import {
+  blogIndexRoute,
+  learnArticleRoutes,
+  learnCentreRoute,
+  learnIndexRoute,
+  legalRoutes,
+  marketingRoutes,
+} from "@/lib/routes";
 import { getAllPosts } from "@/lib/sanity/api";
 import { siteConfig } from "@/lib/site-config";
 
@@ -8,7 +15,14 @@ export const revalidate = 300;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  const staticRoutes = [...marketingRoutes, ...legalRoutes, blogIndexRoute];
+  const staticRoutes = [
+    ...marketingRoutes,
+    ...legalRoutes,
+    blogIndexRoute,
+    learnIndexRoute,
+    learnCentreRoute,
+    ...learnArticleRoutes,
+  ];
   const staticEntries = staticRoutes.map((route) => ({
     url: `${siteConfig.siteUrl}${route}`,
     lastModified: now,

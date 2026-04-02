@@ -15,6 +15,15 @@ export const marketingRoutes = [
 export const legalRoutes = ["/terms-of-service", "/privacy-policy"] as const;
 
 export const blogIndexRoute = "/blog" as const;
+/** Primary learn index URL (sitemap + breadcrumbs). */
+export const learnIndexRoute = "/learn" as const;
+export const learnCentreRoute = "/resources/learn" as const;
+
+export const learnArticleRoutes = [
+  "/learn/mentions-vs-citations-in-ai-search",
+  "/learn/how-tracked-prompts-work",
+  "/learn/how-competitor-benchmarking-works-in-ai-search",
+] as const;
 
 export const blogPostSlugs = [
   "what-ai-health-answers-cite-intent-mentions-and-source-mix",

@@ -230,3 +230,47 @@ export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
     />
   );
 }
+
+type ItemListEntry = {
+  name: string;
+  url: string;
+  description?: string;
+};
+
+export function ItemListJsonLd({
+  name,
+  description,
+  url,
+  items,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  items: ItemListEntry[];
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    description,
+    url,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "WebPage",
+        name: item.name,
+        url: item.url,
+        ...(item.description ? { description: item.description } : {}),
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}

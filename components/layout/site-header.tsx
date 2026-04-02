@@ -14,6 +14,7 @@ const servicesItems = [
 
 const resourcesItems = [
   { href: "/blog", label: "Blog" },
+  { href: "/resources/learn", label: "Learn centre" },
   { href: "/ai-checker", label: "AI Checker" },
   { href: "/how-we-measure-ai-visibility", label: "How we measure visibility" },
 ];

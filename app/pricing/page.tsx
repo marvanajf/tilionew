@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = buildPageMetadata({
   title: "AEO Pricing | Managed Programme from £499 per Month",
   description:
-    "Tilio's managed AEO programme at £499 per month. Daily monitoring across ChatGPT, Perplexity, and Google AI Overviews, content work, prioritised actions, and monthly reporting.",
+    "Tilio's managed AEO programme at £499 per month. Daily monitoring across ChatGPT, Perplexity, and Google AI Overviews, content work, prioritised actions, client dashboard access, and monthly reporting.",
   path: "/pricing",
 });
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
 const pricingFaqs: { q: string; a: string }[] = [
   {
     q: "What is included in the £499/month plan?",
-    a: "The programme includes daily monitoring across ChatGPT, Perplexity, and Google AI Overviews using 100 tracked prompts. Each month you receive 3 new or updated content pieces and 3 content optimisations, plus 4 prioritised actions per week. We deliver a monthly report covering findings, visibility trends, and recommended next steps, as well as AI traffic attribution via Google Analytics.",
+    a: "The programme includes daily monitoring across ChatGPT, Perplexity, and Google AI Overviews using 100 tracked prompts. Each month you receive 3 new or updated content pieces and 3 content optimisations, plus 4 prioritised actions per week. You get dashboard access to check live data any time, a monthly report covering findings, visibility trends, and recommended next steps, and AI traffic attribution via Google Analytics.",
   },
   {
     q: "Who is this plan for?",
@@ -56,7 +56,7 @@ export default function PricingPage() {
       <MarketingHero
         eyebrow="Pricing"
         title="Managed AEO programme"
-        description="£499 per month. We monitor your AI visibility, produce content each month, surface prioritised actions, and report back with clear findings and next steps. A managed service, not a platform."
+        description="We'll monitor your AI visibility, action priority insights and create monthly content optimised for AI surfaces, before reporting back with the data you care about at a cadence that works for you"
         primaryCta={{ href: "/contact", label: "Contact us" }}
         secondaryCta={{ href: "#whats-included", label: "See what's included" }}
         preTitle={
@@ -121,6 +121,7 @@ export default function PricingPage() {
             </div>
             {([
               ["Monthly report", "Findings, trends and next steps"],
+              ["Dashboard access", "Live data, check any time"],
               ["AI traffic attribution", "Google Analytics integration"],
               ["Domains", "Unlimited"],
             ] as [string, string][]).map(([label, value]) => (
