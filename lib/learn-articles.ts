@@ -27,4 +27,11 @@ export const learnArticles: LearnArticle[] = [
       "Fair comparison across brands, shared prompt sets, mentions vs citations in competitive reporting, and how benchmarks turn into AEO priorities.",
     href: "/learn/how-competitor-benchmarking-works-in-ai-search",
   },
+  {
+    category: "Measurement",
+    title: "What good AI visibility reporting looks like",
+    description:
+      "Dashboards vs monthly reports, what to include—from prompts and citations to competitors and cited pages—and how to spot thin or noisy reporting.",
+    href: "/learn/what-good-ai-visibility-reporting-looks-like",
+  },
 ];

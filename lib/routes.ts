@@ -23,6 +23,7 @@ export const learnArticleRoutes = [
   "/learn/mentions-vs-citations-in-ai-search",
   "/learn/how-tracked-prompts-work",
   "/learn/how-competitor-benchmarking-works-in-ai-search",
+  "/learn/what-good-ai-visibility-reporting-looks-like",
 ] as const;
 
 export const blogPostSlugs = [

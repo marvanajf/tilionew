@@ -148,8 +148,8 @@ export function MarketingHero({
           </div>
         </div>
       ) : null}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-10 sm:px-10 md:px-11 lg:px-12">
+        <div className="mx-auto max-w-4xl px-3 text-center sm:px-4 md:px-0">
           {preTitle ? <div className="mb-8 flex justify-center">{preTitle}</div> : null}
           <h1
             className={`${titleSizeClass} ${lightText ? "text-white" : "text-zinc-900"}`}
