@@ -142,7 +142,7 @@ export default function HowTrackedPromptsWorkPage() {
               <span className="hidden text-zinc-400 sm:inline">Measurement</span>
             </nav>
 
-            <h1 className="mt-4 text-3xl font-medium leading-[1.1] tracking-tight text-zinc-900 md:text-4xl">
+            <h1 className="mt-6 text-3xl font-medium leading-[1.1] tracking-tight text-zinc-900 md:text-4xl">
               How tracked prompts work
             </h1>
 

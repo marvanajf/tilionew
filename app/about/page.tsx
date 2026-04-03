@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
-import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
+import { BreadcrumbJsonLd, PersonJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { MarketingHero } from "@/components/marketing/sections";
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/lib/site-config";
@@ -16,19 +16,6 @@ export const metadata: Metadata = buildPageMetadata({
 
 const PAGE_URL = `${siteConfig.siteUrl}/about`;
 const PAGE_DATE = "2026-04-02";
-
-const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Jack",
-  jobTitle: "Co-founder",
-  worksFor: {
-    "@type": "Organization",
-    "@id": `${siteConfig.siteUrl}/#organization`,
-    name: siteConfig.name,
-    url: siteConfig.siteUrl,
-  },
-};
 
 export default function AboutPage() {
   return (
@@ -46,10 +33,7 @@ export default function AboutPage() {
           { name: "About", url: PAGE_URL },
         ]}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
+      <PersonJsonLd id={`${PAGE_URL}#jack`} name="Jack" jobTitle="Co-founder" url={PAGE_URL} />
 
       <MarketingHero
         eyebrow="About Tilio"
@@ -63,7 +47,50 @@ export default function AboutPage() {
       <WhyTilioSection />
       <HowWeWorkSection />
       <SmallTeamSection />
+      <CtaSection />
     </>
+  );
+}
+
+function CtaSection() {
+  return (
+    <section className="relative bg-background py-16 md:py-20">
+      <div className="pointer-events-none absolute inset-0 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="relative h-full">
+          <div className="absolute left-0 right-0 top-0 h-[0.5px] bg-zinc-200" />
+          <div className="absolute left-0 top-0 h-full w-[0.5px] bg-zinc-200" />
+          <div className="absolute right-0 top-0 h-full w-[0.5px] bg-zinc-200" />
+        </div>
+      </div>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">Work with us</h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-600 md:text-base">
+            If you want a clearer view of how your brand shows up in AI search — and what to do about it — we&rsquo;d be happy to talk.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center rounded-[10px] border border-[#93c5fd] bg-[#93c5fd]/20 px-7 py-2.5 text-sm font-medium text-[#1d4ed8] transition-all duration-200 hover:bg-[#93c5fd] hover:text-[#1e3a8a]"
+            >
+              <span className="mr-2">Get in touch</span>
+              <span className="inline-flex rounded-[10px] border border-[#93c5fd] p-1 transition-all duration-200 group-hover:border-[#60a5fa]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden>
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </Link>
+            <Link
+              href="/aeo-agency"
+              className="inline-flex items-center rounded-[10px] border border-zinc-200 bg-background px-7 py-2.5 text-sm font-medium text-zinc-900 transition-colors hover:border-zinc-300 hover:bg-zinc-50"
+            >
+              Our AEO services
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

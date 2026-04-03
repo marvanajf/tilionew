@@ -3,13 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { FaqPageJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { LogoCycler } from "@/components/marketing/logo-cycler";
 import {
   MarketingHero,
   OverarchingFaqSection,
   VisibilitySourcesSection,
+  overarchingFaqItems,
 } from "@/components/marketing/sections";
 import { Container } from "@/components/ui/container";
+import { siteConfig } from "@/lib/site-config";
 import { getAllPosts, isSanityConfigured } from "@/lib/sanity/api";
 
 export const revalidate = 60;
@@ -21,11 +24,22 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/`;
+const PAGE_DATE = "2026-04-02";
+
 export default function HomePage() {
   return (
     <>
+      <WebPageJsonLd
+        name="UK AEO Agency for AI Search Visibility | Tilio"
+        description="Tilio is a UK AEO agency helping brands improve AI search visibility through audits, content improvement, monitoring, and ongoing implementation. Plans from £499/month."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <FaqPageJsonLd questions={overarchingFaqItems} />
       <MarketingHero
-        eyebrow="Answer Engine Optimization"
+        eyebrow="Answer Engine Optimisation"
         title="Measure and improve your AI visibility"
         description="Tilio helps businesses understand how AI systems describe their brand, benchmark competitors, and improve the content that drives mentions and citations."
         primaryCta={{ href: "/contact", label: "Book call" }}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Terms of Service | Tilio",
@@ -9,9 +11,26 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/terms-of-service",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/terms-of-service`;
+const PAGE_DATE = "2026-04-03";
+
 export default function TermsOfServicePage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24 lg:px-8">
+    <>
+      <WebPageJsonLd
+        name="Terms of Service"
+        description="Terms of Service for the Tilio website. These terms govern your use of tilio.co.uk and any related pages."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "Terms of Service", url: PAGE_URL },
+        ]}
+      />
+      <div className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24 lg:px-8">
       <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">Terms of Service</h1>
       <p className="mt-2 text-sm text-zinc-500">Last updated: 3 April 2026</p>
 
@@ -31,7 +50,7 @@ export default function TermsOfServicePage() {
         <Section title="2. Who we are">
           <p>This website is operated by:</p>
           <address className="not-italic">
-            <p>Tilio</p>
+            <p>Tilio, trading name of Luto Ventures Ltd</p>
             <p>Company number: 16563350</p>
             <p>Registered office: 86–90 Paul Street, London, England, EC2A 4NE</p>
             <p>
@@ -193,6 +212,7 @@ export default function TermsOfServicePage() {
         </Section>
       </Prose>
     </div>
+    </>
   );
 }
 

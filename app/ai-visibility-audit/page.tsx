@@ -19,6 +19,10 @@ const PAGE_DATE = "2026-04-02";
 
 const FAQ_ITEMS = [
   {
+    question: "How does the AI Visibility Audit differ from the free AI visibility checker?",
+    answer: `The free checker is an automated technical scan of your site (crawler access, metadata, structured data, and similar on-page signals). The paid audit measures how often your brand is mentioned and cited in AI-generated answers for high-intent prompts, with competitor context and a prioritised action plan. If you want a quick readiness check first, use the free tool at ${siteConfig.siteUrl}/ai-checker.`,
+  },
+  {
     question: "Which platforms do you audit?",
     answer:
       "We audit visibility in ChatGPT and Google AI Overviews. For most buyer-intent journeys, these are the two AI surfaces most likely to influence a decision.",
@@ -83,7 +87,8 @@ export default function AiVisibilityAuditPage() {
       />
       <MarketingHero
         eyebrow="AI Visibility Audit"
-        title="AI Visibility Audit: See If AI Recommends Your Business"
+        title="UK AI visibility audit"
+        titleSubheading="£149, delivered in 24 hours"
         description="A fixed-price audit for teams that want to improve mentions and citations in ChatGPT and Google AI Overviews."
         primaryCta={{ href: "/contact", label: "Get audit" }}
         secondaryCta={{ href: "/contact", label: "Talk to us" }}

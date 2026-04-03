@@ -63,13 +63,15 @@ export function ChartIcon(props: IconProps) {
 type HeroProps = {
   eyebrow: string;
   title: string;
+  /** Shown under the main title in a smaller weight (use instead of joining with an em dash). */
+  titleSubheading?: string;
   description: string;
   primaryCta: { href: string; label: string };
   secondaryCta?: { href: string; label: string };
   secondaryCtaVariant?: "default" | "white";
   /** Rendered after the description and before the primary/secondary CTAs (e.g. interactive tools). */
   children?: ReactNode;
-  /** Rendered above the title — useful for a logo or badge. */
+  /** Rendered above the title (e.g. logo or badge). */
   preTitle?: ReactNode;
   bleedBehindHeader?: boolean;
   showFramingLines?: boolean;
@@ -85,6 +87,7 @@ type HeroProps = {
 
 export function MarketingHero({
   title,
+  titleSubheading,
   description,
   primaryCta,
   secondaryCta,
@@ -150,11 +153,20 @@ export function MarketingHero({
         <div className="mx-auto max-w-4xl px-3 text-center sm:px-4 md:px-0">
           {preTitle ? <div className="mb-8 flex justify-center">{preTitle}</div> : null}
           <h1
-            className={`${titleSizeClass} ${lightText ? "text-white" : "text-zinc-900"}`}
+            className={`normal-case ${titleSizeClass} ${lightText ? "text-white" : "text-zinc-900"}`}
           >
             {title}
           </h1>
-          <p className={`mx-auto mt-8 max-w-3xl text-base leading-relaxed md:text-lg lg:text-xl ${lightText ? "text-white/90" : "text-zinc-700"}`}>
+          {titleSubheading ? (
+            <p
+              className={`mx-auto mt-3 max-w-3xl text-lg font-medium leading-snug tracking-tight md:text-xl ${lightText ? "text-white/85" : "text-zinc-600"}`}
+            >
+              {titleSubheading}
+            </p>
+          ) : null}
+          <p
+            className={`mx-auto max-w-3xl text-base leading-relaxed md:text-lg lg:text-xl ${titleSubheading ? "mt-6" : "mt-8"} ${lightText ? "text-white/90" : "text-zinc-700"}`}
+          >
             {description}
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-5">
@@ -543,7 +555,17 @@ export function VisibilitySourcesSection() {
   );
 }
 
-const overarchingFaqItems = [
+export const overarchingFaqItems = [
+  {
+    question: "What does an AEO agency do?",
+    answer:
+      "An AEO agency helps businesses improve how they appear in AI-generated answers across platforms like ChatGPT, Perplexity and Google AI Overviews. That usually means tracking how your brand is mentioned and cited across a defined set of prompts, benchmarking competitors, and improving the pages most likely to earn stronger visibility in AI search.",
+  },
+  {
+    question: "How much does AEO cost?",
+    answer:
+      "It depends on the scope. A one-off AI Visibility Audit is £149. Our ongoing managed AEO programme is £499 per month — no long-term contract required — and includes daily monitoring, content work, competitor benchmarking, dashboard access and monthly reporting.",
+  },
   {
     question: "What does Tilio do?",
     answer:

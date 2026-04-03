@@ -34,4 +34,11 @@ export const learnArticles: LearnArticle[] = [
       "Dashboards vs monthly reports, what to include—from prompts and citations to competitors and cited pages—and how to spot thin or noisy reporting.",
     href: "/learn/what-good-ai-visibility-reporting-looks-like",
   },
+  {
+    category: "Strategy",
+    title: "How to choose an AEO agency in the UK",
+    description:
+      "What to look for, what to avoid, and how to tell the difference between real AEO work and vague AI SEO claims when evaluating UK providers.",
+    href: "/learn/how-to-choose-an-aeo-agency-in-the-uk",
+  },
 ];

@@ -83,7 +83,8 @@ export default function PricingPage() {
       />
       <MarketingHero
         eyebrow="Pricing"
-        title="Managed AEO Programme — £499/month"
+        title="Managed AEO programme"
+        titleSubheading="£499/month"
         description="We'll monitor your AI visibility, action priority insights and create monthly content optimised for AI surfaces, before reporting back with the data you care about at a cadence that works for you"
         primaryCta={{ href: "/contact", label: "Contact us" }}
         secondaryCta={{ href: "#whats-included", label: "See what's included" }}

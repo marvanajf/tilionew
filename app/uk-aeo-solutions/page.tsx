@@ -149,6 +149,14 @@ function WhyItMattersSection() {
         <p>
           AI SEO, including answer engine optimisation or AEO, is really about doing that well.
         </p>
+        <p className="mt-4">
+          <Link
+            href="/how-we-measure-ai-visibility"
+            className="text-sm font-medium text-zinc-900 underline underline-offset-2 hover:text-[#1d4ed8]"
+          >
+            How we measure AI visibility &rarr;
+          </Link>
+        </p>
       </div>
     </StickySplitSection>
   );

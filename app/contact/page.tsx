@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { MarketingHero, MarketingFramedSection } from "@/components/marketing/sections";
 import { ContactForm } from "@/components/contact/contact-form";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact Tilio | UK AEO Agency",
@@ -11,9 +13,26 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/contact",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/contact`;
+const PAGE_DATE = "2026-04-02";
+
 export default function ContactPage() {
   return (
     <>
+      <WebPageJsonLd
+        schemaType="ContactPage"
+        name="Contact Tilio | UK AEO Agency"
+        description="Contact Tilio, the Exeter-based AEO agency. Talk to us about AI visibility audits, managed AEO support, and improving visibility in AI-generated answers."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "Contact", url: PAGE_URL },
+        ]}
+      />
       <MarketingHero
         eyebrow="Contact"
         title="Tell us where you want your brand to show up."

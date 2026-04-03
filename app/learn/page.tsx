@@ -84,11 +84,11 @@ export default function LearnIndexPage() {
                 <li className="text-zinc-400">Learn</li>
               </ol>
             </nav>
-            <h1 className="mt-6 text-3xl font-medium leading-[1.1] tracking-tight text-zinc-900 md:text-4xl">
+            <h1 className="mt-6 text-3xl font-medium leading-[1.1] tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
               Learn
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-600 md:text-lg">
-              Practical guides on AEO, AI visibility measurement, citations and prompts — structured so you can review, compare and act on what AI
+              Practical guides on AEO, AI visibility measurement, citations and prompts. Structured so you can review, compare and act on what AI
               systems surface about your market.
             </p>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-500">

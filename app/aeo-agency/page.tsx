@@ -69,7 +69,7 @@ export default function AeoAgencyPage() {
       />
       <MarketingHero
         eyebrow="AEO Agency"
-        title="UK AEO Agency for Measurable AI Visibility"
+        title="UK AEO agency for measurable AI visibility"
         description="We measure how Google, ChatGPT, Perplexity describe your brand, benchmark you against competitors, and improve the content and pages most likely to increase mentions and citations."
         primaryCta={{ href: "/contact", label: "Contact us" }}
         secondaryCta={{ href: "/pricing", label: "View pricing for the £499/month AEO plan" }}
@@ -210,6 +210,14 @@ function AeoVsSeoSection() {
         </p>
         <p className="font-medium text-zinc-900">
           In short: an SEO agency may help you rank better. A specialist AEO agency is there to help you show up better inside the answer itself.
+        </p>
+        <p className="mt-4">
+          <Link
+            href="/learn/how-to-choose-an-aeo-agency-in-the-uk"
+            className="text-sm font-medium text-zinc-900 underline underline-offset-2 hover:text-[#1d4ed8]"
+          >
+            How to choose an AEO agency in the UK &rarr;
+          </Link>
         </p>
       </div>
     </StickySplitSection>

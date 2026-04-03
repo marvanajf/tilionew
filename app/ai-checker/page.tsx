@@ -37,7 +37,8 @@ export default function AiCheckerPage() {
       />
       <MarketingHero
         eyebrow="AI Visibility Checker"
-        title="Free AI Visibility Checker — Test Your Site's AI Search Readiness"
+        title="Free AI visibility checker"
+        titleSubheading="Test your site's AI search readiness"
         description="A fast technical readiness check covering crawler access, structured data, metadata, and key on-page signals. Get an instant score and a clear list of what to fix."
         primaryCta={{ href: "/contact", label: "Get in touch" }}
         secondaryCta={{ href: "/ai-visibility-audit", label: "See the full AI Visibility Audit" }}

@@ -64,7 +64,7 @@ export default function GeoAgencyPage() {
       />
       <MarketingHero
         eyebrow="GEO Agency"
-        title="What a GEO agency actually helps you do"
+        title="UK GEO agency for visibility in AI search"
         description="Some teams search for AEO. Others search for GEO. Usually, they're looking for the same outcome: a business that's easier to find, easier to understand and easier to cite in AI-generated answers."
         primaryCta={{ href: "/ai-visibility-audit", label: "Start with an AI Visibility Audit" }}
         secondaryCta={{ href: "/aeo-agency", label: "Explore our AEO agency service" }}

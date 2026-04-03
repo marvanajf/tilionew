@@ -6,6 +6,7 @@ export function OrganizationJsonLd() {
     "@type": "Organization",
     "@id": `${siteConfig.siteUrl}/#organization`,
     name: siteConfig.name,
+    legalName: siteConfig.legalName,
     url: siteConfig.siteUrl,
     logo: {
       "@type": "ImageObject",
@@ -13,10 +14,17 @@ export function OrganizationJsonLd() {
       contentUrl: siteConfig.logoUrl,
     },
     description: siteConfig.description,
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "UK Company Number",
+      value: siteConfig.companyNumber,
+    },
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Exeter",
-      addressRegion: "Devon",
+      streetAddress: "86-90 Paul Street",
+      addressLocality: "London",
+      addressRegion: "England",
+      postalCode: "EC2A 4NE",
       addressCountry: "GB",
     },
     foundingLocation: {
@@ -41,11 +49,73 @@ export function OrganizationJsonLd() {
       "AI mentions",
       "content optimisation for AI",
     ],
-    sameAs: [siteConfig.linkedIn],
+    sameAs: [siteConfig.linkedIn, siteConfig.companiesHouseUrl],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
       url: `${siteConfig.siteUrl}/contact`,
+    },
+    founder: {
+      "@type": "Person",
+      "@id": `${siteConfig.siteUrl}/about#jack`,
+      name: "Jack",
+      jobTitle: "Co-founder",
+      url: `${siteConfig.siteUrl}/about`,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function WebSiteJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteConfig.siteUrl}/#website`,
+    url: siteConfig.siteUrl,
+    name: siteConfig.name,
+    description: siteConfig.description,
+    inLanguage: "en-GB",
+    publisher: {
+      "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+type PersonJsonLdProps = {
+  /** Stable URI for this person, e.g. `${siteUrl}/about#jack` */
+  id: string;
+  name: string;
+  jobTitle: string;
+  url: string;
+};
+
+export function PersonJsonLd({ id, name, jobTitle, url }: PersonJsonLdProps) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": id,
+    name,
+    jobTitle,
+    url,
+    worksFor: {
+      "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
     },
   };
 
@@ -130,8 +200,8 @@ export function AiCheckerWebAppJsonLd() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "AI Overview Checker",
-    alternateName: ["AI Visibility Checker", "AI Search Readiness Tool", "Free AI Overview Checker"],
+    name: "Free AI Visibility Checker",
+    alternateName: ["AI Visibility Checker", "AI Search Readiness Tool", "AI Overview Checker", "Free AI Overview Checker"],
     description:
       "Free tool to check how your brand appears in AI overviews from Google, ChatGPT, and Perplexity. Analyse visibility signals and get an instant readiness score.",
     url,
@@ -164,12 +234,21 @@ type WebPageJsonLdProps = {
   url: string;
   datePublished?: string;
   dateModified?: string;
+  /** Use ContactPage on /contact for clearer entity typing */
+  schemaType?: "WebPage" | "ContactPage";
 };
 
-export function WebPageJsonLd({ name, description, url, datePublished, dateModified }: WebPageJsonLdProps) {
+export function WebPageJsonLd({
+  name,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  schemaType = "WebPage",
+}: WebPageJsonLdProps) {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": schemaType,
     "@id": url,
     url,
     name,

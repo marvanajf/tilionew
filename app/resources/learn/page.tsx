@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { BreadcrumbJsonLd, ItemListJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
 import { learnArticles, type LearnArticle } from "@/lib/learn-articles";
 import { siteConfig } from "@/lib/site-config";
@@ -21,6 +22,10 @@ export const metadata: Metadata = {
   },
 };
 
+const PAGE_URL = `${siteConfig.siteUrl}/resources/learn`;
+const PAGE_DATE = "2026-04-02";
+const publishedArticles = learnArticles.filter((a): a is LearnArticle & { href: string } => a.href !== null);
+
 const categoryColours: Record<string, string> = {
   Foundations: "bg-blue-50 text-blue-700",
   Measurement: "bg-violet-50 text-violet-700",
@@ -29,9 +34,34 @@ const categoryColours: Record<string, string> = {
 };
 
 export default function LearnPage() {
+  const itemListEntries = publishedArticles.map((a) => ({
+    name: a.title,
+    url: `${siteConfig.siteUrl}${a.href}`,
+    description: a.description,
+  }));
+
   return (
     <>
-    <section className="relative overflow-hidden bg-background pt-20 pb-20 md:pt-28 md:pb-28 lg:pt-36 lg:pb-32">
+      <WebPageJsonLd
+        name="Learn | AEO and AI Visibility Guides | Tilio"
+        description="Practical guides on answer engine optimisation, AI visibility measurement, citations, prompts and how to improve how your business appears in AI-generated answers."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <ItemListJsonLd
+        name="Tilio Learn guides"
+        description="Published guides on AI visibility, AEO and measurement."
+        url={PAGE_URL}
+        items={itemListEntries}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "Learn", url: PAGE_URL },
+        ]}
+      />
+      <section className="relative overflow-hidden bg-background pt-20 pb-20 md:pt-28 md:pb-28 lg:pt-36 lg:pb-32">
       {/* Dot pattern */}
       <div
         className="pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-7xl px-6 lg:px-8"

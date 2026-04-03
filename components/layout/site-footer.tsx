@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Container } from "@/components/ui/container";
+import { siteConfig } from "@/lib/site-config";
 
 const serviceLinks = [
   { href: "/aeo-agency", label: "AEO Agency" },
@@ -29,8 +30,6 @@ const companyLinks = [
 
 const logoUrl = "https://res.cloudinary.com/ddsqkll4f/image/upload/q_auto/f_auto/v1775048162/Untitled_design_36_dkgwxb.png";
 const siteName = "Tilio";
-const companyNumber = "16563350";
-
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
@@ -60,7 +59,7 @@ export function SiteFooter() {
             </Link>
             <p className="leading-relaxed text-zinc-600">
               Tilio is a UK answer engine optimisation (AEO) agency. We help brands earn mentions and citations in AI answers
-              across ChatGPT, Claude, Perplexity, and Google AI Overviews.
+              across ChatGPT, Google AI Overviews and Perplexity.
             </p>
             <Link
               href="/contact"
@@ -91,7 +90,7 @@ export function SiteFooter() {
               ))}
               <li>
                 <a
-                  href="https://www.linkedin.com/company/trytilio/"
+                  href={siteConfig.linkedIn}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 transition-colors hover:text-[#1d4ed8]"
@@ -110,7 +109,7 @@ export function SiteFooter() {
           <p>
             {`© ${year} ${siteName}. All rights reserved.`}
           </p>
-          <p className="mt-1">{`Company No. ${companyNumber}`}</p>
+          <p className="mt-1">{`Company No. ${siteConfig.companyNumber}`}</p>
         </div>
       </Container>
     </footer>

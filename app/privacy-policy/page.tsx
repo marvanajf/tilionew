@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
+import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Privacy Policy | Tilio",
@@ -9,9 +11,26 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/privacy-policy",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/privacy-policy`;
+const PAGE_DATE = "2026-04-03";
+
 export default function PrivacyPolicyPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24 lg:px-8">
+    <>
+      <WebPageJsonLd
+        name="Privacy Policy"
+        description="Privacy Policy for Tilio. Learn how we collect, use and protect your personal data when you use our website or work with us."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "Privacy Policy", url: PAGE_URL },
+        ]}
+      />
+      <div className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24 lg:px-8">
       <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">Privacy Policy</h1>
       <p className="mt-2 text-sm text-zinc-500">Last updated: 3 April 2026</p>
 
@@ -23,7 +42,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <p>For the purposes of UK data protection law, the data controller is:</p>
           <address className="not-italic">
-            <p>Tilio</p>
+            <p>Tilio, trading name of Luto Ventures Ltd</p>
             <p>Company number: 16563350</p>
             <p>Registered office: 86–90 Paul Street, London, England, EC2A 4NE</p>
             <p>
@@ -245,6 +264,7 @@ export default function PrivacyPolicyPage() {
         </Section>
       </Prose>
     </div>
+    </>
   );
 }
 
