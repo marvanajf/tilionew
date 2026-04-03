@@ -3,7 +3,9 @@ import Link from "next/link";
 
 import { MarketingHero } from "@/components/marketing/sections";
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { BreadcrumbJsonLd, FaqPageJsonLd, ServiceJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "AI Visibility Audit | ChatGPT & Google AI Overviews",
@@ -12,12 +14,76 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/ai-visibility-audit",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/ai-visibility-audit`;
+const PAGE_DATE = "2026-04-02";
+
+const FAQ_ITEMS = [
+  {
+    question: "Which platforms do you audit?",
+    answer:
+      "We audit visibility in ChatGPT and Google AI Overviews. For most buyer-intent journeys, these are the two AI surfaces most likely to influence a decision.",
+  },
+  {
+    question: "Is this the same as an SEO audit?",
+    answer:
+      "No. A traditional SEO audit focuses on rankings, crawl issues, and technical SEO. This audit focuses on whether your business is mentioned and cited inside AI-generated answers, plus the site changes most likely to improve that.",
+  },
+  {
+    question: "What does citation mean?",
+    answer:
+      "A citation is when an AI answer references your website as a source. Mentions without citations can still help awareness, but citations are stronger for attribution and trust.",
+  },
+  {
+    question: "What do you need from me?",
+    answer:
+      "We need your website URL, your main offer, and 3 to 5 competitors. If needed, we can suggest competitors based on your category.",
+  },
+  {
+    question: "Will this help Google rankings too?",
+    answer:
+      "Often, yes. Clearer structure, stronger internal linking, FAQs, and better page clarity can support SEO as well. But the main goal here is better AI visibility for high-intent searches.",
+  },
+  {
+    question: "How often should we run this?",
+    answer:
+      "Quarterly is a sensible cadence for most businesses, or whenever you change positioning, launch a new service, or enter a new market.",
+  },
+  {
+    question: "Can you implement the recommendations?",
+    answer:
+      "Yes. If you want support beyond the audit, we can turn the roadmap into updated service pages, comparison pages, proof sections, and content designed to improve mentions and citations.",
+  },
+];
+
 export default function AiVisibilityAuditPage() {
   return (
     <>
+      <WebPageJsonLd
+        name="AI Visibility Audit | ChatGPT & Google AI Overviews | Tilio"
+        description="Find out whether AI recommends your business, where competitors are winning, and what to change first. Delivered in 24 hours for a fixed £149."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <FaqPageJsonLd questions={FAQ_ITEMS} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "AI Visibility Audit", url: PAGE_URL },
+        ]}
+      />
+      <ServiceJsonLd
+        name="AI Visibility Audit"
+        description="A fixed-price audit measuring how often your business is mentioned and cited in AI-generated answers for high-intent searches, with a prioritised action plan delivered in 24 hours."
+        url={PAGE_URL}
+        price="149"
+        priceCurrency="GBP"
+        deliveryLeadTime="PT24H"
+        areaServed="GB"
+      />
       <MarketingHero
         eyebrow="AI Visibility Audit"
-        title="See whether AI recommends your business, where competitors are winning, and what to change first"
+        title="AI Visibility Audit: See If AI Recommends Your Business"
         description="A fixed-price audit for teams that want to improve mentions and citations in ChatGPT and Google AI Overviews."
         primaryCta={{ href: "/contact", label: "Get audit" }}
         secondaryCta={{ href: "/contact", label: "Talk to us" }}
@@ -481,49 +547,11 @@ function PricingSection() {
 }
 
 function FaqSection() {
-  const faqs = [
-    {
-      question: "Which platforms do you audit?",
-      answer:
-        "We audit visibility in ChatGPT and Google AI Overviews. For most buyer-intent journeys, these are the two AI surfaces most likely to influence a decision.",
-    },
-    {
-      question: "Is this the same as an SEO audit?",
-      answer:
-        "No. A traditional SEO audit focuses on rankings, crawl issues, and technical SEO. This audit focuses on whether your business is mentioned and cited inside AI-generated answers, plus the site changes most likely to improve that.",
-    },
-    {
-      question: "What does citation mean?",
-      answer:
-        "A citation is when an AI answer references your website as a source. Mentions without citations can still help awareness, but citations are stronger for attribution and trust.",
-    },
-    {
-      question: "What do you need from me?",
-      answer:
-        "We need your website URL, your main offer, and 3 to 5 competitors. If needed, we can suggest competitors based on your category.",
-    },
-    {
-      question: "Will this help Google rankings too?",
-      answer:
-        "Often, yes. Clearer structure, stronger internal linking, FAQs, and better page clarity can support SEO as well. But the main goal here is better AI visibility for high-intent searches.",
-    },
-    {
-      question: "How often should we run this?",
-      answer:
-        "Quarterly is a sensible cadence for most businesses, or whenever you change positioning, launch a new service, or enter a new market.",
-    },
-    {
-      question: "Can you implement the recommendations?",
-      answer:
-        "Yes. If you want support beyond the audit, we can turn the roadmap into updated service pages, comparison pages, proof sections, and content designed to improve mentions and citations.",
-    },
-  ];
-
   return (
     <SectionFrame>
       <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">FAQs</h2>
       <div className="mx-auto mt-8 max-w-4xl space-y-4">
-        {faqs.map((faq) => (
+        {FAQ_ITEMS.map((faq) => (
           <details key={faq.question} className="group rounded-xl border border-zinc-200 bg-background p-5">
             <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-sm font-semibold text-zinc-900">
               <span>{faq.question}</span>

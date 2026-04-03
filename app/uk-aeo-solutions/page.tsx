@@ -3,7 +3,9 @@ import Link from "next/link";
 
 import { MarketingHero } from "@/components/marketing/sections";
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { BreadcrumbJsonLd, FaqPageJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "AI SEO for UK businesses | Improve visibility in AI search",
@@ -12,9 +14,54 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/uk-aeo-solutions",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/uk-aeo-solutions`;
+const PAGE_DATE = "2026-04-02";
+
+const FAQ_ITEMS = [
+  {
+    question: "What is AI SEO for UK businesses?",
+    answer:
+      "AI SEO is the process of making your site easier for AI systems to understand, describe and cite in AI-generated answers. In practice, that usually means improving your key pages, tightening site structure, reducing ambiguity and strengthening trust signals.",
+  },
+  {
+    question: "Is AI SEO the same as AEO?",
+    answer:
+      "They overlap. AI SEO is the broader term and is often easier for businesses to understand. AEO is more specific and usually refers to improving how your brand appears in answer-led search experiences. On this page, we use AI SEO as the lead term and AEO as the more specialist term within it.",
+  },
+  {
+    question: "Do UK businesses need a different AI SEO approach?",
+    answer:
+      "Not a completely different one, but the priorities are often different. Most UK businesses do not need a huge AI content programme straight away. They usually get more value from improving commercial pages, clarifying positioning and fixing the structural issues that make the site harder to interpret.",
+  },
+  {
+    question: "Which pages should I improve first?",
+    answer:
+      "Usually the pages closest to buying intent. That includes service pages, pricing pages, comparison pages, FAQs and proof-led pages. These are the pages that help buyers understand what you do and whether you are a good fit.",
+  },
+  {
+    question: "Should I start with an audit or ongoing support?",
+    answer:
+      "If you want a practical starting point and a clearer view of what to fix first, start with an audit. If you already know AI SEO matters in your market and want regular support to improve visibility over time, ongoing support is usually the better fit.",
+  },
+];
+
 export default function UkAeoSolutionsPage() {
   return (
     <>
+      <WebPageJsonLd
+        name="AI SEO for UK businesses | Improve visibility in AI search | Tilio"
+        description="Learn how UK businesses should approach AI SEO, which pages to improve first, common site gaps to fix, and whether to start with an audit or ongoing support."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <FaqPageJsonLd questions={FAQ_ITEMS} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "AI SEO for UK Businesses", url: PAGE_URL },
+        ]}
+      />
       <MarketingHero
         eyebrow="UK AI SEO"
         title="How UK businesses can improve visibility in AI search"
@@ -239,40 +286,17 @@ function WhoBenefitsSection() {
 }
 
 function FaqSection() {
-  const faqs = [
-    {
-      q: "What is AI SEO for UK businesses?",
-      a: "AI SEO is the process of making your site easier for AI systems to understand, describe and cite in AI-generated answers. In practice, that usually means improving your key pages, tightening site structure, reducing ambiguity and strengthening trust signals.",
-    },
-    {
-      q: "Is AI SEO the same as AEO?",
-      a: "They overlap. AI SEO is the broader term and is often easier for businesses to understand. AEO is more specific and usually refers to improving how your brand appears in answer-led search experiences. On this page, we use AI SEO as the lead term and AEO as the more specialist term within it.",
-    },
-    {
-      q: "Do UK businesses need a different AI SEO approach?",
-      a: "Not a completely different one, but the priorities are often different. Most UK businesses do not need a huge AI content programme straight away. They usually get more value from improving commercial pages, clarifying positioning and fixing the structural issues that make the site harder to interpret.",
-    },
-    {
-      q: "Which pages should I improve first?",
-      a: "Usually the pages closest to buying intent. That includes service pages, pricing pages, comparison pages, FAQs and proof-led pages. These are the pages that help buyers understand what you do and whether you are a good fit.",
-    },
-    {
-      q: "Should I start with an audit or ongoing support?",
-      a: "If you want a practical starting point and a clearer view of what to fix first, start with an audit. If you already know AI SEO matters in your market and want regular support to improve visibility over time, ongoing support is usually the better fit.",
-    },
-  ];
-
   return (
     <SectionFrame>
       <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">FAQs</h2>
       <div className="mt-8 max-w-4xl space-y-4">
-        {faqs.map((faq) => (
-          <details key={faq.q} className="group rounded-xl border border-zinc-200 bg-background p-5">
+        {FAQ_ITEMS.map((faq) => (
+          <details key={faq.question} className="group rounded-xl border border-zinc-200 bg-background p-5">
             <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-sm font-semibold text-zinc-900">
-              <span>{faq.q}</span>
+              <span>{faq.question}</span>
               <span className="text-zinc-500 transition-transform group-open:rotate-45">+</span>
             </summary>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-600">{faq.a}</p>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600">{faq.answer}</p>
           </details>
         ))}
       </div>

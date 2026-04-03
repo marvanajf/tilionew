@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { BreadcrumbJsonLd, FaqPageJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { MarketingHero } from "@/components/marketing/sections";
 import { Container } from "@/components/ui/container";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "UK AEO Agency | Answer Engine Optimisation Services",
@@ -12,12 +14,62 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/aeo-agency",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/aeo-agency`;
+const PAGE_DATE = "2026-04-02";
+
+const FAQ_ITEMS = [
+  {
+    question: "What is AEO?",
+    answer:
+      "AEO, or Answer Engine Optimisation, is the practice of improving the likelihood that your brand is included, cited or recommended in AI-generated answers. It focuses on the signals answer systems use to interpret and trust information.",
+  },
+  {
+    question: "Is AEO the same as SEO?",
+    answer:
+      "No. SEO and AEO overlap, but they are not identical. SEO improves discoverability in traditional search results. AEO focuses on improving selection within AI-generated answers and assistant experiences, where extractability, clarity and credibility are especially important.",
+  },
+  {
+    question: "What is the difference between an AEO agency and an SEO agency?",
+    answer:
+      "An SEO agency typically approaches AEO through a traditional lens — more blog content, metadata, schema and internal links. A specialist AEO agency starts by looking at how your brand actually appears inside AI-generated answers. That means prompt-based testing, tracking mentions and citations, analysing which pages are used as sources, benchmarking competitors and improving content so it is easier for AI systems to retrieve, understand and cite. The measurement also differs: SEO focuses on rankings and traffic, while AEO focuses on mention rates, citation rates and share of voice in answer-led search.",
+  },
+  {
+    question: "Can you optimise for Google AI Overviews and ChatGPT?",
+    answer:
+      "Yes. No agency can control AI outputs directly, but it is possible to improve the likelihood of being selected, cited and described accurately by strengthening public information, content structure, entity clarity and authority signals.",
+  },
+  {
+    question: "How do you measure AEO results?",
+    answer:
+      "We measure visibility across prompts, quality of mentions and citations, accuracy of description, and commercial outcomes such as traffic and conversions where available.",
+  },
+  {
+    question: "How long does AEO take to show results?",
+    answer:
+      "Most programmes begin with baseline measurement and prioritisation, followed by implementation of technical and content improvements. Early movement can appear within the first one to three months, depending on the site, the competition and the scope of work.",
+  },
+];
+
 export default function AeoAgencyPage() {
   return (
     <>
+      <WebPageJsonLd
+        name="UK AEO Agency | Answer Engine Optimisation Services | Tilio"
+        description="UK AEO agency for marketing and SEO teams. Improve mentions and citations in AI answers with technical foundations, answer-ready content, monitoring, and stakeholder reporting."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <FaqPageJsonLd questions={FAQ_ITEMS} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "AEO Agency", url: PAGE_URL },
+        ]}
+      />
       <MarketingHero
         eyebrow="AEO Agency"
-        title="AEO agency for teams that want measurable AI visibility"
+        title="UK AEO Agency for Measurable AI Visibility"
         description="We measure how Google, ChatGPT, Perplexity describe your brand, benchmark you against competitors, and improve the content and pages most likely to increase mentions and citations."
         primaryCta={{ href: "/contact", label: "Contact us" }}
         secondaryCta={{ href: "/pricing", label: "View pricing for the £499/month AEO plan" }}
@@ -26,6 +78,7 @@ export default function AeoAgencyPage() {
       <ProfoundSection />
       <FitSection />
       <ExplanationSection />
+      <AeoVsSeoSection />
       <WhatYouGetSection />
       <FourLayerSystemSection />
       <PlatformsSection />
@@ -129,6 +182,35 @@ function ExplanationSection() {
           beyond your own website.
         </p>
         <p>Our work is tied to what AI systems are actually returning for your priority questions, not to generic SEO checklists.</p>
+      </div>
+    </StickySplitSection>
+  );
+}
+
+function AeoVsSeoSection() {
+  return (
+    <StickySplitSection
+      label="Specialist vs generalist"
+      title="AEO agency vs SEO agency: what's the difference?"
+      intro="An SEO agency that offers AEO will usually approach it through a traditional SEO lens."
+    >
+      <div className="space-y-4 text-sm leading-relaxed text-zinc-600 md:text-base">
+        <p>
+          That often means publishing more blog content, tightening metadata, adding schema, improving internal links, and hoping that stronger organic
+          visibility translates into stronger AI visibility too. Some of that work still matters. But it is often only part of the picture.
+        </p>
+        <p>
+          A specialist AEO agency starts somewhere else. It looks at how your brand actually appears inside AI-generated answers, not just where pages
+          rank in search results. That means prompt-based testing, tracking mentions and citations across platforms, analysing which pages are being used
+          as sources, benchmarking competitors, and improving content so it is easier for AI systems to retrieve, understand and cite.
+        </p>
+        <p>
+          The measurement is different too. Traditional SEO leans heavily on rankings, clicks and traffic. AEO looks more at visibility across prompt
+          sets, mention rates, citation rates, competitor presence and share of voice in answer-led search.
+        </p>
+        <p className="font-medium text-zinc-900">
+          In short: an SEO agency may help you rank better. A specialist AEO agency is there to help you show up better inside the answer itself.
+        </p>
       </div>
     </StickySplitSection>
   );
@@ -534,39 +616,11 @@ function ProfoundSection() {
 }
 
 function FaqSection() {
-  const faqs = [
-    {
-      question: "What is AEO?",
-      answer:
-        "AEO, or Answer Engine Optimisation, is the practice of improving the likelihood that your brand is included, cited or recommended in AI-generated answers. It focuses on the signals answer systems use to interpret and trust information.",
-    },
-    {
-      question: "Is AEO the same as SEO?",
-      answer:
-        "No. SEO and AEO overlap, but they are not identical. SEO improves discoverability in traditional search results. AEO focuses on improving selection within AI-generated answers and assistant experiences, where extractability, clarity and credibility are especially important.",
-    },
-    {
-      question: "Can you optimise for Google AI Overviews and ChatGPT?",
-      answer:
-        "Yes. No agency can control AI outputs directly, but it is possible to improve the likelihood of being selected, cited and described accurately by strengthening public information, content structure, entity clarity and authority signals.",
-    },
-    {
-      question: "How do you measure AEO results?",
-      answer:
-        "We measure visibility across prompts, quality of mentions and citations, accuracy of description, and commercial outcomes such as traffic and conversions where available.",
-    },
-    {
-      question: "How long does AEO take to show results?",
-      answer:
-        "Most programmes begin with baseline measurement and prioritisation, followed by implementation of technical and content improvements. Early movement can appear within the first one to three months, depending on the site, the competition and the scope of work.",
-    },
-  ];
-
   return (
     <SectionFrame>
       <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">FAQs</h2>
       <div className="mx-auto mt-8 max-w-4xl space-y-4">
-        {faqs.map((faq) => (
+        {FAQ_ITEMS.map((faq) => (
           <details key={faq.question} className="group rounded-xl border border-zinc-200 bg-background p-5">
             <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-sm font-semibold text-zinc-900">
               <span>{faq.question}</span>
@@ -579,3 +633,4 @@ function FaqSection() {
     </SectionFrame>
   );
 }
+

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { buildPageMetadata } from "@/components/seo/metadata";
+import { BreadcrumbJsonLd, FaqPageJsonLd, ServiceJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { MarketingFramedSection, MarketingHero } from "@/components/marketing/sections";
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/lib/site-config";
@@ -14,6 +15,8 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/pricing",
 });
 
+const PAGE_URL = `${siteConfig.siteUrl}/pricing`;
+const PAGE_DATE = "2026-04-02";
 
 const pricingFaqs: { q: string; a: string }[] = [
   {
@@ -50,12 +53,37 @@ const pricingFaqs: { q: string; a: string }[] = [
   },
 ];
 
+const faqItemsForSchema = pricingFaqs.map((f) => ({ question: f.q, answer: f.a }));
+
 export default function PricingPage() {
   return (
     <>
+      <WebPageJsonLd
+        name="AEO Pricing | Managed Programme from £499 per Month | Tilio"
+        description="Tilio's managed AEO programme at £499 per month. Daily monitoring across ChatGPT, Perplexity, and Google AI Overviews, content work, prioritised actions, client dashboard access, and monthly reporting."
+        url={PAGE_URL}
+        datePublished={PAGE_DATE}
+        dateModified={PAGE_DATE}
+      />
+      <FaqPageJsonLd questions={faqItemsForSchema} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.siteUrl },
+          { name: "Pricing", url: PAGE_URL },
+        ]}
+      />
+      <ServiceJsonLd
+        name="Managed AEO Programme"
+        description="Monthly managed AEO programme including daily AI visibility monitoring across ChatGPT, Perplexity and Google AI Overviews, content production, competitor benchmarking, dashboard access and monthly reporting."
+        url={PAGE_URL}
+        price="499"
+        priceCurrency="GBP"
+        billingIncrement="P1M"
+        areaServed="GB"
+      />
       <MarketingHero
         eyebrow="Pricing"
-        title="Managed AEO programme"
+        title="Managed AEO Programme — £499/month"
         description="We'll monitor your AI visibility, action priority insights and create monthly content optimised for AI surfaces, before reporting back with the data you care about at a cadence that works for you"
         primaryCta={{ href: "/contact", label: "Contact us" }}
         secondaryCta={{ href: "#whats-included", label: "See what's included" }}

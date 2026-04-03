@@ -13,6 +13,12 @@ export function OrganizationJsonLd() {
       contentUrl: siteConfig.logoUrl,
     },
     description: siteConfig.description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Exeter",
+      addressRegion: "Devon",
+      addressCountry: "GB",
+    },
     foundingLocation: {
       "@type": "Place",
       name: "Exeter, UK",
@@ -21,6 +27,20 @@ export function OrganizationJsonLd() {
       "@type": "Country",
       name: "United Kingdom",
     },
+    knowsAbout: [
+      "Answer Engine Optimisation",
+      "AEO",
+      "Generative Engine Optimisation",
+      "GEO",
+      "AI visibility",
+      "AI search",
+      "AI Overviews",
+      "ChatGPT visibility",
+      "Perplexity visibility",
+      "AI citations",
+      "AI mentions",
+      "content optimisation for AI",
+    ],
     sameAs: [siteConfig.linkedIn],
     contactPoint: {
       "@type": "ContactPoint",
@@ -221,6 +241,66 @@ export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
       name: item.name,
       item: item.url,
     })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+type ServiceJsonLdProps = {
+  name: string;
+  description: string;
+  url: string;
+  price: string;
+  priceCurrency: string;
+  /** ISO 8601 billing period — e.g. "P1M" for monthly. Omit for one-off. */
+  billingIncrement?: string;
+  /** ISO 8601 delivery lead time — e.g. "PT24H" for 24-hour delivery. */
+  deliveryLeadTime?: string;
+  areaServed?: string;
+};
+
+export function ServiceJsonLd({
+  name,
+  description,
+  url,
+  price,
+  priceCurrency,
+  billingIncrement,
+  deliveryLeadTime,
+  areaServed = "GB",
+}: ServiceJsonLdProps) {
+  const offer: Record<string, unknown> = {
+    "@type": "Offer",
+    price,
+    priceCurrency,
+    availability: "https://schema.org/InStock",
+    url,
+    ...(billingIncrement ? { priceSpecification: { "@type": "UnitPriceSpecification", price, priceCurrency, billingIncrement } } : {}),
+  };
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    url,
+    provider: {
+      "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: areaServed,
+    },
+    ...(deliveryLeadTime ? { deliveryLeadTime } : {}),
+    offers: offer,
   };
 
   return (

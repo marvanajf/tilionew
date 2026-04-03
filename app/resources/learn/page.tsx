@@ -62,7 +62,7 @@ export default function LearnPage() {
               className="h-9 w-auto"
             />
           </div>
-          <h1 className="text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
+          <h1 className="text-3xl font-medium leading-[1.1] tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
             Learn
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-zinc-600 md:text-lg">

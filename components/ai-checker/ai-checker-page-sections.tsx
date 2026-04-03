@@ -3,6 +3,49 @@ import type { ReactNode } from "react";
 
 import { MarketingFramedSection } from "@/components/marketing/sections";
 
+export const AI_CHECKER_FAQ_ITEMS = [
+  {
+    question: "What is an AI visibility checker?",
+    answer:
+      "An AI visibility checker is a tool that reviews whether your website appears technically ready to be accessed and understood by AI systems. Our free tool checks robots.txt, structured data, and key on-page signals to give you an instant score and suggestions for improvement.",
+  },
+  {
+    question: "What is an AI search visibility checker?",
+    answer:
+      "An AI search visibility checker is another way of describing a tool that assesses how well your site is prepared for AI-powered search and answer engines. In practice, people often use this term interchangeably with AI visibility checker.",
+  },
+  {
+    question: "Does this tool tell me if ChatGPT recommends my brand?",
+    answer:
+      "No. This free checker does not test live brand mentions or recommendations inside ChatGPT, Claude, or Perplexity. It focuses on technical readiness signals only. If you want to know how often your business is mentioned, cited, or compared in AI answers, you will need an AI Visibility Audit.",
+  },
+  {
+    question: "What affects AI visibility?",
+    answer:
+      "The most common technical factors include bot access, structured data, clear page metadata, internal linking, and how easy your content is to interpret. Content quality, proof, and page structure also matter, especially when you want to improve citation potential.",
+  },
+  {
+    question: "Is robots.txt important for AI visibility?",
+    answer:
+      "Yes. Robots.txt helps control whether certain crawlers can access your site. If important bots are blocked, that can reduce technical visibility and limit discovery.",
+  },
+  {
+    question: "Is structured data required?",
+    answer:
+      "Not always, but it is often helpful. Structured data gives machines clearer signals about your pages and can make content easier to interpret.",
+  },
+  {
+    question: "Can I improve my score and check again?",
+    answer:
+      "Yes. You can update your site, then run the checker again to see whether your technical signals have improved.",
+  },
+  {
+    question: "Is this a full AEO audit?",
+    answer:
+      "No. This is a free AI visibility checker, not a full audit. It is designed as a fast first step. For competitor benchmarking, prompt testing, citation analysis, and prioritised recommendations, book an AI Visibility Audit.",
+  },
+] as const;
+
 function Prose({ children }: { children: ReactNode }) {
   return <div className="mx-auto max-w-3xl">{children}</div>;
 }
@@ -214,46 +257,13 @@ export function AiCheckerPageSections() {
         <Prose>
           <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">Frequently asked questions</h2>
           <div className="mt-8 space-y-4">
-            {[
-              {
-                q: "What is an AI visibility checker?",
-                a: "An AI visibility checker is a tool that reviews whether your website appears technically ready to be accessed and understood by AI systems. Our free tool checks robots.txt, structured data, and key on-page signals to give you an instant score and suggestions for improvement.",
-              },
-              {
-                q: "What is an AI search visibility checker?",
-                a: "An AI search visibility checker is another way of describing a tool that assesses how well your site is prepared for AI-powered search and answer engines. In practice, people often use this term interchangeably with AI visibility checker.",
-              },
-              {
-                q: "Does this tool tell me if ChatGPT recommends my brand?",
-                a: "No. This free checker does not test live brand mentions or recommendations inside ChatGPT, Claude, or Perplexity. It focuses on technical readiness signals only. If you want to know how often your business is mentioned, cited, or compared in AI answers, you will need an AI Visibility Audit.",
-              },
-              {
-                q: "What affects AI visibility?",
-                a: "The most common technical factors include bot access, structured data, clear page metadata, internal linking, and how easy your content is to interpret. Content quality, proof, and page structure also matter, especially when you want to improve citation potential.",
-              },
-              {
-                q: "Is robots.txt important for AI visibility?",
-                a: "Yes. Robots.txt helps control whether certain crawlers can access your site. If important bots are blocked, that can reduce technical visibility and limit discovery.",
-              },
-              {
-                q: "Is structured data required?",
-                a: "Not always, but it is often helpful. Structured data gives machines clearer signals about your pages and can make content easier to interpret.",
-              },
-              {
-                q: "Can I improve my score and check again?",
-                a: "Yes. You can update your site, then run the checker again to see whether your technical signals have improved.",
-              },
-              {
-                q: "Is this a full AEO audit?",
-                a: "No. This is a free AI visibility checker, not a full audit. It is designed as a fast first step. For competitor benchmarking, prompt testing, citation analysis, and prioritised recommendations, book an AI Visibility Audit.",
-              },
-            ].map((faq) => (
-              <details key={faq.q} className="group rounded-xl border border-zinc-200 bg-background p-5">
+            {AI_CHECKER_FAQ_ITEMS.map((faq) => (
+              <details key={faq.question} className="group rounded-xl border border-zinc-200 bg-background p-5">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-sm font-semibold text-zinc-900">
-                  <span>{faq.q}</span>
+                  <span>{faq.question}</span>
                   <span className="text-zinc-500 transition-transform group-open:rotate-45">+</span>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600">{faq.a}</p>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">{faq.answer}</p>
               </details>
             ))}
           </div>

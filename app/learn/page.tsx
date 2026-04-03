@@ -84,7 +84,7 @@ export default function LearnIndexPage() {
                 <li className="text-zinc-400">Learn</li>
               </ol>
             </nav>
-            <h1 className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl">
+            <h1 className="mt-6 text-3xl font-medium leading-[1.1] tracking-tight text-zinc-900 md:text-4xl">
               Learn
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-600 md:text-lg">

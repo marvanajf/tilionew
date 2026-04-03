@@ -108,9 +108,7 @@ export function MarketingHero({
       : "pt-14 pb-14 md:pt-20 md:pb-20 lg:pt-28 lg:pb-24";
 
   const titleSizeClass =
-    size === "tall"
-      ? "text-[2rem] font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
-      : "text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-5xl";
+    "text-3xl font-medium leading-[1.1] tracking-tight md:text-4xl lg:text-5xl";
 
   return (
     <section
