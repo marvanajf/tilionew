@@ -4,7 +4,9 @@ import { blogIndexRoute, legalRoutes, marketingRoutes } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 export default function robots(): MetadataRoute.Robots {
-  const canonicalHost = new URL(siteConfig.siteUrl).host;
+  // Hostname only (never a scheme). Must match `siteConfig.siteUrl`. If production shows
+  // non-www here, crawlers are not receiving this file from the current deployment.
+  const hostname = new URL(siteConfig.siteUrl).hostname;
 
   return {
     rules: [{ userAgent: "*", allow: "/" }],
@@ -12,7 +14,7 @@ export default function robots(): MetadataRoute.Robots {
       `${siteConfig.siteUrl}/sitemap.xml`,
       `${siteConfig.siteUrl}/feed.xml`,
     ],
-    host: canonicalHost,
+    host: hostname,
   };
 }
 

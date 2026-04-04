@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 
+import { legacyPathRedirects } from "./lib/seo-legacy-redirects";
 import { siteConfig } from "./lib/site-config";
 
 const nextConfig: NextConfig = {
@@ -22,7 +23,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     const canonical = new URL(siteConfig.siteUrl);
-    const out = [
+    const favicon = [
       {
         source: "/favicon.ico",
         destination: "/icon.png",
@@ -30,19 +31,20 @@ const nextConfig: NextConfig = {
       },
     ] as const;
 
-    if (!canonical.hostname.startsWith("www.")) {
-      return [...out];
-    }
+    const apexToWww =
+      canonical.hostname.startsWith("www.") ?
+        {
+          source: "/:path*",
+          has: [{ type: "host" as const, value: canonical.hostname.slice("www.".length) }],
+          destination: `${canonical.origin}/:path*`,
+          permanent: true,
+        }
+      : null;
 
-    const apexHost = canonical.hostname.slice("www.".length);
     return [
-      ...out,
-      {
-        source: "/:path*",
-        has: [{ type: "host" as const, value: apexHost }],
-        destination: `${canonical.origin}/:path*`,
-        permanent: true,
-      },
+      ...legacyPathRedirects,
+      ...favicon,
+      ...(apexToWww ? [apexToWww] : []),
     ];
   },
 };

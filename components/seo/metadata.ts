@@ -45,7 +45,10 @@ export function buildPageMetadata(input: BuildPageMetadataInput): Metadata {
 export const baseMetadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   icons: {
-    apple: "/icon.png",
+    /** Explicit `rel="icon"` + `shortcut` so crawlers and SEO tools that only look for these pass. */
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    shortcut: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/icon.png", type: "image/png" }],
   },
   title: {
     default: siteConfig.name,
