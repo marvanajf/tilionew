@@ -5,6 +5,8 @@ import type { ReactNode, SVGProps } from "react";
 import { HeroDotsCanvas } from "@/components/ui/hero-dots-canvas";
 
 import { Container } from "@/components/ui/container";
+import { learnArticles, type LearnArticle } from "@/lib/learn-articles";
+import { learnIndexRoute } from "@/lib/routes";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
@@ -597,6 +599,55 @@ export const overarchingFaqItems = [
       "For a quick read on discoverability, run the free AI visibility check. To start a programme, we align on your domains, priority questions, and competitors, then kick off onboarding.",
   },
 ];
+
+export function LearnHubSection() {
+  const guides = learnArticles.filter((a): a is LearnArticle & { href: string } => a.href !== null).slice(0, 3);
+
+  return (
+    <section className="relative bg-background py-16 md:py-20">
+      <div className="pointer-events-none absolute inset-0 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="relative h-full">
+          <div className="absolute left-0 right-0 top-0 h-[0.5px] border-t border-dashed border-zinc-300" />
+          <div className="absolute left-0 top-0 h-full w-[0.5px] border-l border-dashed border-zinc-300" />
+          <div className="absolute right-0 top-0 h-full w-[0.5px] border-r border-dashed border-zinc-300" />
+        </div>
+      </div>
+      <Container>
+        <div className="text-center">
+          <h2 className="text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">Learn about AI visibility</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600 md:text-base">
+            Practical guides on mentions, citations, tracked prompts, reporting and benchmarking—structured so you can review how AI surfaces
+            describe your market and what to improve next.
+          </p>
+          <Link
+            href={learnIndexRoute}
+            className="mt-4 inline-block text-sm font-medium text-zinc-500 underline-offset-4 hover:text-zinc-900 hover:underline"
+          >
+            Browse all guides
+          </Link>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {guides.map((guide) => (
+            <article key={guide.href} className="rounded-xl border border-zinc-200 bg-background p-6">
+              <p className="text-xs text-zinc-500">{guide.category}</p>
+              <Link href={guide.href} className="mt-2 block text-base font-semibold tracking-tight text-zinc-900 hover:underline">
+                {guide.title}
+              </Link>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600">{guide.description}</p>
+              <Link
+                href={guide.href}
+                className="mt-4 inline-block text-sm font-medium text-[#1d4ed8] underline-offset-4 hover:underline"
+              >
+                Read guide
+              </Link>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
 
 export function OverarchingFaqSection() {
   return (

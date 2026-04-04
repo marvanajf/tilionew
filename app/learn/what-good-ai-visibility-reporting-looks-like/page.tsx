@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { buildPageMetadata } from "@/components/seo/metadata";
+import { LearnGuideRelatedReading } from "@/components/learn/learn-guide-related-reading";
+import { buildLearnGuidePageMetadata } from "@/components/seo/metadata";
 import { BreadcrumbJsonLd, FaqPageJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { TableOfContents, TocMobile } from "@/components/blog/table-of-contents";
 import { Container } from "@/components/ui/container";
@@ -11,12 +12,16 @@ import type { TocEntry } from "@/lib/toc";
 
 const LEARN_INDEX_URL = `${siteConfig.siteUrl}${learnIndexRoute}`;
 
+const PAGE_URL = `${siteConfig.siteUrl}/learn/what-good-ai-visibility-reporting-looks-like`;
+const PAGE_DATE = "2026-04-02";
+
 export const metadata: Metadata = {
-  ...buildPageMetadata({
+  ...buildLearnGuidePageMetadata({
     title: "What good AI visibility reporting looks like",
     description:
       "Learn what a good AI visibility report should include, from tracked prompts and citations to competitor context, cited pages and next actions.",
     path: "/learn/what-good-ai-visibility-reporting-looks-like",
+    publishedAt: PAGE_DATE,
   }),
   robots: {
     index: true,
@@ -24,9 +29,6 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
 };
-
-const PAGE_URL = `${siteConfig.siteUrl}/learn/what-good-ai-visibility-reporting-looks-like`;
-const PAGE_DATE = "2026-04-02";
 
 const TOC_ENTRIES: TocEntry[] = [
   {
@@ -376,61 +378,7 @@ export default function WhatGoodAiVisibilityReportingLooksLikePage() {
                 <p>That is the balance worth aiming for.</p>
               </Prose>
 
-              <div className="mt-12 border-t border-zinc-200 pt-8">
-                <p className="text-sm font-semibold text-zinc-900">Related reading</p>
-                <ul className="mt-4 space-y-3">
-                  <li>
-                    <Link
-                      href="/how-we-measure-ai-visibility"
-                      className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline"
-                    >
-                      How we measure AI visibility
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/working-with-tilio"
-                      className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline"
-                    >
-                      Working with Tilio
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/learn/how-tracked-prompts-work"
-                      className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline"
-                    >
-                      How tracked prompts work
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/learn/mentions-vs-citations-in-ai-search"
-                      className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline"
-                    >
-                      Mentions vs citations in AI search
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/learn/how-competitor-benchmarking-works-in-ai-search"
-                      className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline"
-                    >
-                      How competitor benchmarking works in AI search
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-visibility-audit" className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline">
-                      AI Visibility Audit
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={learnIndexRoute} className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline">
-                      Back to Learn
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+              <LearnGuideRelatedReading currentHref="/learn/what-good-ai-visibility-reporting-looks-like" />
             </div>
           </div>
         </div>

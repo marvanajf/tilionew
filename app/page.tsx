@@ -6,6 +6,7 @@ import { buildPageMetadata } from "@/components/seo/metadata";
 import { FaqPageJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { LogoCycler } from "@/components/marketing/logo-cycler";
 import {
+  LearnHubSection,
   MarketingHero,
   OverarchingFaqSection,
   VisibilitySourcesSection,
@@ -53,6 +54,7 @@ export default function HomePage() {
       <VisibilitySourcesSection />
       <OverarchingFaqSection />
       <FeaturedPostsSection />
+      <LearnHubSection />
     </>
   );
 }

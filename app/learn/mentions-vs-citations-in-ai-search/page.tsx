@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { buildPageMetadata } from "@/components/seo/metadata";
+import { LearnGuideRelatedReading } from "@/components/learn/learn-guide-related-reading";
+import { buildLearnGuidePageMetadata } from "@/components/seo/metadata";
 import { BreadcrumbJsonLd, FaqPageJsonLd, WebPageJsonLd } from "@/components/seo/json-ld";
 import { TableOfContents, TocMobile } from "@/components/blog/table-of-contents";
 import { Container } from "@/components/ui/container";
@@ -11,12 +12,16 @@ import type { TocEntry } from "@/lib/toc";
 
 const LEARN_INDEX_URL = `${siteConfig.siteUrl}${learnIndexRoute}`;
 
+const PAGE_URL = `${siteConfig.siteUrl}/learn/mentions-vs-citations-in-ai-search`;
+const PAGE_DATE = "2026-04-02";
+
 export const metadata: Metadata = {
-  ...buildPageMetadata({
+  ...buildLearnGuidePageMetadata({
     title: "Mentions vs citations in AI search",
     description:
       "Learn the difference between mentions and citations in AI search, why they're related but not the same, and what to look for in AI visibility reports.",
     path: "/learn/mentions-vs-citations-in-ai-search",
+    publishedAt: PAGE_DATE,
   }),
   robots: {
     index: true,
@@ -24,9 +29,6 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
 };
-
-const PAGE_URL = `${siteConfig.siteUrl}/learn/mentions-vs-citations-in-ai-search`;
-const PAGE_DATE = "2026-04-02";
 
 const TOC_ENTRIES: TocEntry[] = [
   { id: "what-a-mention-is", text: "What a mention is", level: 2 },
@@ -309,27 +311,7 @@ export default function MentionsVsCitationsPage() {
                 </p>
               </Prose>
 
-              {/* Related reading */}
-              <div className="mt-12 border-t border-zinc-200 pt-8">
-                <p className="text-sm font-semibold text-zinc-900">Related reading</p>
-                <ul className="mt-4 space-y-3">
-                  <li>
-                    <Link href="/how-we-measure-ai-visibility" className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline">
-                      How we measure AI visibility
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-visibility-audit" className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline">
-                      AI Visibility Audit
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={learnIndexRoute} className="text-sm text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline">
-                      Back to Learn
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+              <LearnGuideRelatedReading currentHref="/learn/mentions-vs-citations-in-ai-search" />
             </div>
 
           </div>

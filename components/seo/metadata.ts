@@ -8,6 +8,28 @@ type BuildPageMetadataInput = {
   path: string;
 };
 
+type BuildLearnGuidePageMetadataInput = BuildPageMetadataInput & {
+  /** ISO date string `YYYY-MM-DD` for article Open Graph and schema. */
+  publishedAt: string;
+  modifiedAt?: string;
+};
+
+/** Learn guides: canonical + description + Open Graph `article` with published/modified times. */
+export function buildLearnGuidePageMetadata(input: BuildLearnGuidePageMetadataInput): Metadata {
+  const base = buildPageMetadata(input);
+  const publishedIso = `${input.publishedAt}T12:00:00.000Z`;
+  const modifiedIso = `${input.modifiedAt ?? input.publishedAt}T12:00:00.000Z`;
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      type: "article",
+      publishedTime: publishedIso,
+      modifiedTime: modifiedIso,
+    },
+  };
+}
+
 export function buildPageMetadata(input: BuildPageMetadataInput): Metadata {
   const url = `${siteConfig.siteUrl}${input.path}`;
   const fullTitle = `${input.title} | ${siteConfig.name}`;

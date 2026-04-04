@@ -36,6 +36,13 @@ export const learnArticles: LearnArticle[] = [
   },
   {
     category: "Strategy",
+    title: "What focused AI visibility work can do",
+    description:
+      "What public case studies suggest about how fast AI visibility can move when prompts, pages and signals are aligned—with examples from the market.",
+    href: "/learn/what-focused-ai-visibility-work-can-do",
+  },
+  {
+    category: "Strategy",
     title: "How to choose an AEO agency in the UK",
     description:
       "What to look for, what to avoid, and how to tell the difference between real AEO work and vague AI SEO claims when evaluating UK providers.",
