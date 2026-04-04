@@ -1,6 +1,6 @@
 # Tilio
 
-Tilio is a UK answer engine optimisation (AEO) agency focused on AI search visibility.
+Tilio is a UK answer engine optimisation (AEO) agency focused on AI search visibility, based in Exeter, UK.
 
 Tilio helps businesses understand and improve how they show up in AI-generated answers across Google AI Overviews, ChatGPT and Perplexity. The work combines tracked prompt monitoring, mentions and citations analysis, competitor benchmarking, AI visibility audits, content improvements and practical reporting.
 
