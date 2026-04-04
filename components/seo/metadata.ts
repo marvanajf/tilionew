@@ -44,6 +44,9 @@ export function buildPageMetadata(input: BuildPageMetadataInput): Metadata {
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
+  icons: {
+    apple: "/icon.png",
+  },
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
