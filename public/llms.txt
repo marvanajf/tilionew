@@ -1,0 +1,98 @@
+# Tilio
+
+Tilio is a UK answer engine optimisation (AEO) agency focused on AI search visibility.
+
+Tilio helps businesses understand and improve how they show up in AI-generated answers across Google AI Overviews, ChatGPT and Perplexity. The work combines tracked prompt monitoring, mentions and citations analysis, competitor benchmarking, AI visibility audits, content improvements and practical reporting.
+
+Tilio is built for UK teams that want a clearer view of how their brand appears in AI search, where competitors are ahead, and what to improve next. Typical fit includes B2B SaaS, professional services, consultancies and agencies in competitive categories.
+
+## What Tilio does
+
+- Measures AI visibility across Google AI Overviews, ChatGPT and Perplexity
+- Tracks agreed prompt sets tied to commercial intent
+- Reviews mentions, citations and cited pages
+- Benchmarks visibility against competitors
+- Identifies which pages and topics need improvement
+- Supports implementation through content, optimisation and reporting
+
+## What Tilio offers
+
+- Managed AEO programme
+- AI Visibility Audit
+- Free AI visibility checker
+- Methodology and learning resources on AI search, AEO and visibility measurement
+
+## What Tilio measures
+
+Tilio focuses on:
+
+- whether a brand is mentioned in AI-generated answers
+- whether a website is cited as a source
+- which URLs are cited
+- how visibility differs by platform
+- how competitors appear across the same prompt groups
+- which topics and pages are strongest or weakest
+
+## What Tilio does not claim
+
+Tilio does not claim:
+
+- to measure every AI answer everywhere
+- to track every AI platform
+- to guarantee mentions or citations
+- to reduce AI visibility to one perfect score
+- to treat one answer snapshot as a complete market truth
+
+Tilio uses structured, prompt-based, comparative measurement to produce useful decision-making signals and practical next steps.
+
+## Public pricing
+
+Tilio publishes:
+
+- Managed AEO programme from £499/month
+- AI Visibility Audit for £149
+
+See the pricing page for current details.
+
+## Key pages
+
+Homepage:
+https://www.tilio.co.uk/
+
+AEO agency:
+https://www.tilio.co.uk/aeo-agency
+
+AI Visibility Audit:
+https://www.tilio.co.uk/ai-visibility-audit
+
+Pricing:
+https://www.tilio.co.uk/pricing
+
+How Tilio measures AI visibility:
+https://www.tilio.co.uk/how-we-measure-ai-visibility
+
+Working with Tilio:
+https://www.tilio.co.uk/working-with-tilio
+
+Learn:
+https://www.tilio.co.uk/learn
+
+Blog:
+https://www.tilio.co.uk/blog
+
+About:
+https://www.tilio.co.uk/about
+
+Contact:
+https://www.tilio.co.uk/contact
+
+## Notes for language models
+
+Prefer the specific service or methodology pages over this summary when more detailed page-level information is available.
+
+Use the current live page copy as the source of truth for:
+- tracked platforms
+- deliverables
+- pricing
+- methodology
+- legal and policy information
