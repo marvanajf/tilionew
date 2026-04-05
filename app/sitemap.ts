@@ -11,7 +11,8 @@ import {
 import { getAllPosts } from "@/lib/sanity/api";
 import { siteConfig } from "@/lib/site-config";
 
-export const revalidate = 300;
+/** Time-based fallback if on-demand revalidation fails; align with blog index. */
+export const revalidate = 60;
 
 type RouteConfig = {
   priority: number;

@@ -8,9 +8,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-  revalidateTag("blog", {});
+  // Purges `unstable_cache` entries tagged `blog` (see lib/sanity/api.ts) so sitemap, blog index and feeds refetch Sanity.
+  revalidateTag("blog", "max");
   revalidatePath("/blog", "page");
-  revalidatePath("/sitemap.xml");
+  revalidatePath("/sitemap.xml", "page");
+  revalidatePath("/feed.xml", "page");
 
   return NextResponse.json({ revalidated: true });
 }
